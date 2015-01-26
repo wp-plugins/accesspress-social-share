@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Share your site urls in most popular social medias and show share counts on your website with various designs.
 
 == Description ==
-<strong>AccessPress Social Share</strong> is a <strong>Free WordPress plugin</strong> to allow anyone easily share website content (page, posts, image, media) on major social media (Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg ) by the use of the latest APIs on your website! 
+<strong>AccessPress Social Share</strong> is a <strong>Free WordPress plugin</strong> to allow anyone easily share website content (page, posts) on major social media (Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg ) by the use of the latest APIs on your website! 
 
 A perfect plugin to make any content on your website social-share-friendly, and increase your social reach dramatically!
 
@@ -25,18 +25,18 @@ Just get it done in a few minutes!
 
 * <strong>Beautifully designed 5 themes to select from.</strong> More available in Pro versoin.
 * <strong>Major 6 social media included </strong>(Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg). More available in Pro version.
-* <strong>Latest use of APIs to fetch data</strong>
-* <strong>Auto updates on all APIs</strong>
-* <strong>Option to select which social media profile to show</strong>
-* <strong>Display order for selected social media</strong>
-* <strong>Cache setting</strong> - you can set a cache period to avoid frequent API calls
-* <strong>Fully Responsive</strong> - compatible with mobile devices
+* <strong>Latest use of APIs to fetch data</strong>.
+* <strong>Auto updates on all APIs</strong>.
+* <strong>Option to select which social media profile to show</strong>.
+* <strong>Display order for selected social media</strong>.
+* <strong>Cache setting</strong> - you can set a cache period to avoid frequent API calls.
+* <strong>Fully Responsive</strong> - compatible with mobile devices.
 * <strong>User friendly and very interactive user interface</strong>
         - Anyone can use it, its as easy as drag and drop.
 * <strong>Upgrades available</strong>
         - For more features like more social media profiles, more design themes, your own design etc. - upgrade to Pro.  
 * <strong>Support</strong>
-        - Dedicated email, forum support
+        - Dedicated email, forum support.
 * <strong>Free updates</strong>
         - Get free updates for lifetime.
 
@@ -61,7 +61,7 @@ For complete information and documentation regarding plugin, please visit below 
 
 == Installation ==
 1. Unzip accesspress-social-share.zip
-2. Upload all the files to the /wp-content/plugins/accesspress-social-share
+2. Upload all the files to the /wp-content/plugins/accesspress-social-share.
 3. Activate the plugin through the 'Plugins' menu in WordPress.
 4. For customizing the plugin's settings, click on AccessPress Social Share menu in Wordpress left admin menu.
 
@@ -92,7 +92,8 @@ Once you install the plugin , you can check some general documentation about how
 
  
 = 1.0.0 =
-* Plugin submitted to http://wordpress.org for review and approval
+* Plugin submitted to http://wordpress.org for review and approval.
+* Plugin committed to plugin repository after approval.
 
 == Upgrade Notice ==
 There is an update available for the AccessPress Social Share Plugin. Please update to recieve new updates and bug fixes.
