@@ -8,7 +8,8 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Share your site urls in most popular social medias and show share counts on your website with various designs.
+Share your website content (page, post) on social media and increase your social reach!
+Beautifully designed themes | Share count | Go viral. 
 
 == Description ==
 <strong>AccessPress Social Share</strong> is a <strong>Free WordPress plugin</strong> to allow anyone easily share website content (page, posts) on major social media (Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg ) by the use of the latest APIs on your website! 
@@ -67,7 +68,7 @@ For complete information and documentation regarding plugin, please visit below 
 
 == Frequently Asked Questions ==
 = What does this plugin do? =
-This plugin provides the ability to allow anyone easily share website content (page, posts, image, media) on major social media (Facebook, Twitter, googleplus, LinkedIn, Pinterest, Digg ) by the use of the latest APIs on your website!
+This plugin provides the ability to allow anyone easily share website content (page, posts) on major social media (Facebook, Twitter, googleplus, LinkedIn, Pinterest, Digg ) by the use of the latest APIs on your website!
 
 = Will it effect my site's speed? =
 No , because we have provided the caching option to store the share count in the database and update within certain period kept in the plugin cache settings section.
