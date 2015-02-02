@@ -81,10 +81,15 @@ if(isset($_SESSION['apss_message'])){ ?>
 	<div class="apss-tab-contents apss-share-options" id="tab-apss-share-options" style='display:none'>
 		<h2><?php _e('Share options:', APSS_TEXT_DOMAIN); ?> </h2>
 		<span class="social-text"><?php _e( 'Please choose the options where you want to display social share:', APSS_TEXT_DOMAIN ); ?></span>
-		<p><input type="checkbox" id="apss_posts" value="posts" name="apss_share_settings[share_options][]" <?php if (in_array("posts", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="posts"><?php _e( 'Posts', APSS_TEXT_DOMAIN ); ?> </label></p>
-		<p><input type="checkbox" id="apss_pages" value="pages" name="apss_share_settings[share_options][]" <?php if (in_array("pages", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="posts"><?php _e('Pages', APSS_TEXT_DOMAIN ); ?> </label></p>
-		<p><input type="checkbox" id="apss_archives" value="archives" name="apss_share_settings[share_options][]" <?php if (in_array("archives", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="posts"><?php _e('Archives', APSS_TEXT_DOMAIN ); ?></label></p>
-		<p><input type="checkbox" id="apss_categories" value="categories" name="apss_share_settings[share_options][]" <?php if (in_array("categories", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="posts"><?php _e('Categories', APSS_TEXT_DOMAIN ); ?></label></p>
+		<p><input type="checkbox" id="apss_posts" value="post" name="apss_share_settings[share_options][]" <?php if (in_array("post", $options['share_options']) || in_array("posts", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_posts"><?php _e( 'Posts', APSS_TEXT_DOMAIN ); ?> </label></p>
+		<p><input type="checkbox" id="apss_pages" value="page" name="apss_share_settings[share_options][]" <?php if (in_array("page", $options['share_options']) || in_array("page", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_pages"><?php _e('Pages', APSS_TEXT_DOMAIN ); ?> </label></p>
+		
+		<p><input type="checkbox" id="apss_front_page" value="front_page" name="apss_share_settings[share_options][]" <?php if (in_array("front_page", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_front_page"><?php _e('Front Page', APSS_TEXT_DOMAIN ); ?></label></p>		
+		<p><input type="checkbox" id="apss_archives" value="archives" name="apss_share_settings[share_options][]" <?php if (in_array("archives", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_archives"><?php _e('Archives', APSS_TEXT_DOMAIN ); ?></label></p>
+		
+		<p><input type="checkbox" id="apss_categories" value="categories" name="apss_share_settings[share_options][]" <?php if (in_array("categories", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_categories"><?php _e('Categories', APSS_TEXT_DOMAIN ); ?></label></p>
+		<p><input type="checkbox" id="apss_all" value="all" name="apss_share_settings[share_options][]" <?php if (in_array("all", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_all"><?php _e('Other (search results, etc)', APSS_TEXT_DOMAIN ); ?></label></p>
+		
 	</div>
 
 	<div class="apss-tab-contents apss-display-settings" id="tab-apss-display-settings" style='display:none'>

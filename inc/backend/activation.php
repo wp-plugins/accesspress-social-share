@@ -1,7 +1,7 @@
 <?php 
 defined('ABSPATH') or die("No script kiddies please!");
       $apss_share_settings=array();
-      $share_options = array('posts', 'pages');
+      $share_options = array('post', 'page');
       $apss_share_settings['share_options']=$share_options;
       $apss_share_settings['social_icon_set']='1';
       $apss_share_settings['share_positions']='below_content';

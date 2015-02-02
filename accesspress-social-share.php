@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 1.0.0
+Version: 1.0.1
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -31,7 +31,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '1.0.0' );
+	define( 'APSS_VERSION', '1.0.1' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -226,64 +226,49 @@ if( !class_exists( 'APSS_Class' ) ){
 			}	
 			
 				 $share_shows_in_options=$options['share_options'];
-				 if(in_array('posts', $share_shows_in_options)){
-				 	if($options['share_positions']=='below_content'){
-					return $content."<div class='apss-social-share apss-theme-$icon_set_value clearfix' >$api_link</div>";
-					}
 
-					if($options['share_positions']=='above_content'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content;
-					}
-
-					if($options['share_positions']=='on_both'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
-					}
-
-				 }else if(in_array('pages', $share_shows_in_options) && is_page()){
-				 	if($options['share_positions']=='below_content'){
-					return $content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
-					}
-
-					if($options['share_positions']=='above_content'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content;
-					}
-
-					if($options['share_positions']=='on_both'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
-					}
-
-				 }else if(in_array('archives', $share_shows_in_options) && is_archive()){
-
-				 	if($options['share_positions']=='below_content'){
-					return $content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
-					}
-
-					if($options['share_positions']=='above_content'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content;
-					}
-
-					if($options['share_positions']=='on_both'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
-					}
+				  $all = in_array('all', $options['share_options']);
+				 $is_lists_authorized = (is_search()) && $all ? true : false;
 
 
-				 }else if(in_array('categories', $share_shows_in_options) && is_category()){
 
-				 	if($options['share_positions']=='below_content'){
-					return $content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
-					}
-
-					if($options['share_positions']=='above_content'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content;
-					}
-
-					if($options['share_positions']=='on_both'){
-					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
-					}
-
+				 $all = in_array('all', $options['share_options']);
+				 $is_lists_authorized = (is_search()) && $all ? true : false;
+				 
+				 $front_page = in_array('front_page', $options['share_options']);
+				 $is_front_page=(is_front_page()) && $front_page ? true : false;
+				 
+				 $share_shows_in_options=$options['share_options'];
+				 $is_singular = is_singular($share_shows_in_options) && !is_front_page() ? true : false;
+				 if(!empty($share_shows_in_options)){
+				 	$is_tax =is_tax($share_shows_in_options);
 				 }else{
-				 	return $content;
+				 	$is_tax=false;
 				 }
+
+				 $is_category = in_array('categories', $options['share_options']);
+				 $default_category=(is_category()) && $is_category ? true : false;
+
+				 $is_default_archive=in_array('archives', $options['share_options']);
+				 $default_archives=( (is_archive() && !is_tax() )&& !is_category() ) && $is_default_archive ? true : false;
+
+
+
+				  if($is_lists_authorized || $is_singular || $is_tax || $is_front_page || $default_category || $default_archives){
+				 				 	if($options['share_positions']=='below_content'){
+				 					return $content."<div class='apss-social-share apss-theme-$icon_set_value clearfix' >$api_link</div>";
+				 					}
+
+				 					if($options['share_positions']=='above_content'){
+				 					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content;
+				 					}
+
+				 					if($options['share_positions']=='on_both'){
+				 					return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>".$content."<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$api_link</div>";
+				 					}
+				 				 }else{
+				 				 	return $content;
+				 				 }
 
 
 		}
@@ -427,10 +412,14 @@ if( !class_exists( 'APSS_Class' ) ){
 
          //function to return json values from social media urls
          private function get_json_values( $url ){
-         $args=array( 'timeout'     => 10 );
-         $response = wp_remote_get( $url, $args );
-         return $response['body']; 
-         }
+	         $args=array( 'timeout'     => 10 );
+	         $response = wp_remote_get( $url, $args );
+	         if(is_wp_error($response)){
+				//echo 'Error Found ( '.$response->get_error_message().' )';
+			 }else{
+	         	return $response['body']; 
+	         }
+    	}
 
          ////////////////////////////////////for count ends here/////////////////////////////////////////////
 
