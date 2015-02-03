@@ -82,7 +82,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 		<h2><?php _e('Share options:', APSS_TEXT_DOMAIN); ?> </h2>
 		<span class="social-text"><?php _e( 'Please choose the options where you want to display social share:', APSS_TEXT_DOMAIN ); ?></span>
 		<p><input type="checkbox" id="apss_posts" value="post" name="apss_share_settings[share_options][]" <?php if (in_array("post", $options['share_options']) || in_array("posts", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_posts"><?php _e( 'Posts', APSS_TEXT_DOMAIN ); ?> </label></p>
-		<p><input type="checkbox" id="apss_pages" value="page" name="apss_share_settings[share_options][]" <?php if (in_array("page", $options['share_options']) || in_array("page", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_pages"><?php _e('Pages', APSS_TEXT_DOMAIN ); ?> </label></p>
+		<p><input type="checkbox" id="apss_pages" value="page" name="apss_share_settings[share_options][]" <?php if (in_array("page", $options['share_options']) || in_array("pages", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_pages"><?php _e('Pages', APSS_TEXT_DOMAIN ); ?> </label></p>
 		
 		<p><input type="checkbox" id="apss_front_page" value="front_page" name="apss_share_settings[share_options][]" <?php if (in_array("front_page", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_front_page"><?php _e('Front Page', APSS_TEXT_DOMAIN ); ?></label></p>		
 		<p><input type="checkbox" id="apss_archives" value="archives" name="apss_share_settings[share_options][]" <?php if (in_array("archives", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_archives"><?php _e('Archives', APSS_TEXT_DOMAIN ); ?></label></p>
