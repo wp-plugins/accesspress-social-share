@@ -89,6 +89,12 @@ Once you install the plugin , you can check some general documentation about how
 6. Backend Miscellaneous Settings Section
 
 == Changelog ==
+= 1.0.2 = 
+* Fixed the bug for pre-selected page share options.
+* Done the bug fixing for label attributes for display settings tab and miscellaneous tab.
+* Some changes done for how to use section and about sections. 
+
+
 = 1.0.1 =
 * Added the options for the display of the social share in home page.
 * Fixed wp error occuring for the http request made by site.

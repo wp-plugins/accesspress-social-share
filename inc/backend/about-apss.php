@@ -4,13 +4,13 @@
 
 		<p>AccessPress Themes is a venture of Access Keys - who has developed hundreds of Custom WordPress themes and plugins for its clients over the years. </p>
 
-		<p><strong>AccessPress Social Share</strong> - is plugin to allow anyone easily share website content (page, posts) on major social media (Facebook, Twitter… ). A perfect plugin to make any content on your website social-share-friendly, and increase your social reach dramatically! </p>
+		<p><strong>AccessPress Social Share</strong> - is plugin to allow anyone easily share website content (pages, posts) on major social media (Facebook, Twitter… ). A perfect plugin to make any content on your website social-share-friendly, and increase your social reach dramatically! </p>
 		<div class="halfseperator"></div>
 		<p><strong>Please visit our product page for more details here:</strong><br />
 			<a href="http://accesspressthemes.com/wordpress-plugins/accesspress-social-share/" target="_blank">http://accesspressthemes.com/wordpress-plugins/accesspress-social-share/</a></p>
 			<div class="halfseperator"></div>
 			<p><strong>Plugin documentation can be found here:</strong><br />
-				<a href="http://accesspressthemes.com/wordpress-plugin-instruction-social-share/" target="_blank">http://accesspressthemes.com/wordpress-plugin-instruction-social-share/</a></p>
+				<a href="https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/" target="_blank">https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/</a></p>
 				<div class="halfseperator"></div>
 				<p><strong>If you’d like to buy premium version of this plugin please check here:</strong><br />
 					<a href="http://accesspressthemes.com/wordpress-plugins/accesspress-social-share-premium/" target="_blank">http://accesspressthemes.com/wordpress-plugins/accesspress-social-share-premium/ </a></p>
