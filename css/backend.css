@@ -12,7 +12,7 @@
 .apss-setting-tabs li a {
     display: block;
     font-size: 15px;
-    padding: 15px 25px;
+    padding: 15px 20px;
     text-decoration: none;
     background-color: #bdbbbb;
     border-left: 1px solid #e5e5e5;
@@ -25,6 +25,7 @@
     -o-transition:all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;*/
 }
+
 
 .apss-setting-tabs  li {
     margin: 0;
@@ -102,8 +103,9 @@
 }
 
 .apss-wrapper-block {
-    max-width: 980px;
+    width: 833px;
     padding: 20px 0;
+	float:left;
 }
 
 .apss-setting-header {
@@ -166,7 +168,7 @@
     border-radius: 5px;
     line-height: 26px;
     margin: 0 0 10px;
-    width: 36%;
+    width: 43%;
 }
 
 
@@ -378,4 +380,17 @@
     margin: 0 10px 0 0;
 }
 
+.apss-promoFloat{
+	background: #f1f1f1;
+	float: left;
+	width: 311px;
+	padding: 20px 10px;
+}
+.apss-promo-buttons{
+	padding:20px 0;
+	text-align:center;
+}
+.apss-promo-buttons a{
+	display:inline-block;
+}
 
