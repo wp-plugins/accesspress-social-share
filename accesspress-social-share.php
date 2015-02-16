@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 1.0.2
+Version: 1.0.3
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -31,7 +31,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '1.0.2' );
+	define( 'APSS_VERSION', '1.0.3' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -125,7 +125,7 @@ if( !class_exists( 'APSS_Class' ) ){
 			$counter_enable_options=$options['counter_enable_options'];
 			$api_link='';
 			$icon_set_value=$options['social_icon_set'];
-			$url=  $this->curPageURL();
+			$url=  get_the_permalink();//$this->curPageURL();
 			$text= get_the_title();
 			$cache_period = ($options['cache_period'] != '') ? $options['cache_period']*60*60 : 24 * 60 * 60 ;
 			$counter_share='';
@@ -175,13 +175,14 @@ if( !class_exists( 'APSS_Class' ) ){
 						$counter_pinterest="<div class='count'>$count_pinterest</div>";
 						}
 						global $post;
-						if(has_post_thumbnail()){
-						$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-						$link = 'http://pinterest.com/pin/create/bookmarklet/?media='.$image[0].'&amp;url='.$url.'&amp;title='.get_the_title().'&amp;description='.$post->post_excerpt;
-						$api_link .="<div class='apss-pinterest apss-single-icon'><a title='Share on Pinterest' target='$apss_link_open_option' href='$link'><div class='apss-icon-block'><i class='fa fa-pinterest'></i><span class='apss-social-text'>Share on $key</span><span class='apss-share'>share</span></div>$counter_pinterest</a></div>";
-						}else{
+						// if(has_post_thumbnail()){
+						// $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+						// $link = 'http://pinterest.com/pin/create/bookmarklet/?media='.$image[0].'&amp;url='.$url.'&amp;title='.get_the_title().'&amp;description='.$post->post_excerpt;
+						// $api_link .="<div class='apss-pinterest apss-single-icon'><a title='Share on Pinterest' target='$apss_link_open_option' href='$link'><div class='apss-icon-block'><i class='fa fa-pinterest'></i><span class='apss-social-text'>Share on $key</span><span class='apss-share'>share</span></div>$counter_pinterest</a></div>";
+						// }else{
 							
-						}
+						// }
+						$api_link .="<div class='apss-pinterest apss-single-icon'><a href='javascript:void((function()%7Bvar%20e=document.createElement(&apos;script&apos;);e.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);e.setAttribute(&apos;charset&apos;,&apos;UTF-8&apos;);e.setAttribute(&apos;src&apos;,&apos;http://assets.pinterest.com/js/pinmarklet.js?r=&apos;+Math.random()*99999999);document.body.appendChild(e)%7D)());'><div class='apss-icon-block'><i class='fa fa-pinterest'></i><span class='apss-social-text'>Share on $key</span><span class='apss-share'>share</span></div>$counter_pinterest</a></div>";
 						break;
 						
 						case 'linkedin':
