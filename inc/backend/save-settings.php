@@ -26,11 +26,15 @@
   	$apss_share_settings['footer_javascript'] = $_POST['apss_share_settings']['footer_javascript'];
   	$apss_share_settings['apss_email_subject'] = stripslashes_deep($_POST['apss_share_settings']['apss_email_subject']);
  	$apss_share_settings['apss_email_body'] = stripslashes_deep($_POST['apss_share_settings']['apss_email_body']);
+ 	if(!isset($apss_share_settings['apss_social_counts_transients'])){
+ 		$apss_share_settings['apss_social_counts_transients']=array();
+ 	}
 
 	// The option already exists, so we just update it.
 	update_option(APSS_SETTING_NAME, $apss_share_settings );
 	$_SESSION['apss_message'] = __('Settings Saved Successfully.', APSS_TEXT_DOMAIN); 
 	wp_redirect(admin_url().'admin.php?page=apss-share');
 	exit;
+
  }
 

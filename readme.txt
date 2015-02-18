@@ -4,7 +4,7 @@ Tags: social share counter, social share, social media share, social network sha
 Donate link: http://accesspressthemes.com/donation/
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,12 +89,17 @@ Once you install the plugin , you can check some general documentation about how
 6. Backend Miscellaneous Settings Section
 
 == Changelog ==
+= 1.0.4 =
+* Code modification for the pinterest share options for images.
+* Share count using ajax to store it in cache.
+* Changes in the upgrade banner images.
+* Fixed the bug for share options if not selected to any.
+* Fixed the bug in the twitter share and added twitter share via in the twitter share link.  
+
 = 1.0.3 = 
 * Fixed the bug for pinterest images share.
 * Fixed the bug for the post and page share url.
 
-
-== Changelog ==
 = 1.0.2 = 
 * Fixed the bug for pre-selected page share options.
 * Done the bug fixing for label attributes for display settings tab and miscellaneous tab.

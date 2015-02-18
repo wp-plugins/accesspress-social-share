@@ -15,7 +15,6 @@ jQuery('.'+args).html('');
                         profile_array.push($(this).attr('data-key')) ;
                         });
                         var social_networks_orders = profile_array.join(',');
-                        //console.log(social_networks_orders);
                         $('#apss_social_newtwork_order').val(social_networks_orders);
              	      }
         });

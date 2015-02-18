@@ -20,7 +20,7 @@
     color:#fff;
 
     /*transition: all 0.5s ease-in-out;
-	-webkit-transition:all 0.5s ease-in-out;
+    -webkit-transition:all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition:all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;*/
@@ -33,51 +33,51 @@
 }
 
 .apss-setting-tabs  li:first-child a{
-	border-left:none;
+    border-left:none;
 }
 
 .apss-setting-tabs li a.apss-active-tab,.apss-setting-tabs li a:hover{
-	background-color: #fff;
-	color:#0074a2;
+    background-color: #fff;
+    color:#0074a2;
 }
 
 .apss-setting-tabs li a:before{
-	border-top: 2px solid #0074a2;
-	height:2px;
-	width:100%;
-	position:absolute;
-	content:"";
-	left:0;
-	bottom:-4px;
-	opacity: 0;
-	/*transition: all 0.5s ease-in-out;
-	-webkit-transition:all 0.5s ease-in-out;
+    border-top: 2px solid #0074a2;
+    height:2px;
+    width:100%;
+    position:absolute;
+    content:"";
+    left:0;
+    bottom:-4px;
+    opacity: 0;
+    /*transition: all 0.5s ease-in-out;
+    -webkit-transition:all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition:all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;*/
 }
 
 .apss-setting-tabs li a:hover:before{
-	border-top: 2px solid #0074a2;
-	height:2px;
-	width:100%;
-	position:absolute;
-	content:"";
-	left:0;
-	bottom: 44px;
-	opacity:1;
+    border-top: 2px solid #0074a2;
+    height:2px;
+    width:100%;
+    position:absolute;
+    content:"";
+    left:0;
+    bottom: 44px;
+    opacity:1;
 
 }
 
 .apss-setting-tabs li a.apss-active-tab:before{
-	border-top: 2px solid #0074a2;
-	height:2px;
-	width:100%;
-	position:absolute;
-	content:"";
-	left:0;
-	top:0;
-	opacity: 1;
+    border-top: 2px solid #0074a2;
+    height:2px;
+    width:100%;
+    position:absolute;
+    content:"";
+    left:0;
+    top:0;
+    opacity: 1;
 }
 
 .apss-wrapper {
@@ -105,7 +105,7 @@
 .apss-wrapper-block {
     width: 833px;
     padding: 20px 0;
-	float:left;
+    float:left;
 }
 
 .apss-setting-header {
@@ -144,7 +144,7 @@
 }
 
 .apss-message{
-	background: none repeat scroll 0 0 #fff;
+    background: none repeat scroll 0 0 #fff;
     border-left: 4px solid #7ad03a;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
     margin: 5px 0 30px;
@@ -215,7 +215,7 @@
 
 .apss_notes_cache_settings {
     color: #666666;
-   	display: block;
+    display: block;
     font-style: italic;
     line-height: 1.6;
     margin-left: 2px;
@@ -225,7 +225,7 @@
 }
 
 .error{
-	color: #ef1515;
+    color: #ef1515;
     font-size: 13px;
 }
 
@@ -312,7 +312,7 @@
 }
 
 .other-products  h3.get-header:after{
-	transform: perspective(8px) rotateX(1.93deg) translateZ(-1px);
+    transform: perspective(8px) rotateX(1.93deg) translateZ(-1px);
     -webkit-transform: perspective(8px) rotateX(1.93deg) translateZ(-1px);
 }
 
@@ -323,14 +323,14 @@
 }
 
 .social-icon li a{
-	width:36px;
-	height:36px;
-	display:block;
-	transition: all 0.2s ease-in;
-	-webkit-transition:all 0.2s ease-in;
-	-moz-transition: all 0.2s ease-in;
-	-o-transition:all 0.2s ease-in;
-	-ms-transition: all 0.2s ease-in;
+    width:36px;
+    height:36px;
+    display:block;
+    transition: all 0.2s ease-in;
+    -webkit-transition:all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition:all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
 }
 
 
@@ -381,16 +381,16 @@
 }
 
 .apss-promoFloat{
-	background: #f1f1f1;
-	float: left;
-	width: 311px;
-	padding: 20px 10px;
+    background: #f1f1f1;
+    float: left;
+    width: 311px;
+    padding: 20px 10px;
 }
 .apss-promo-buttons{
-	padding:20px 0;
-	text-align:center;
+    padding:20px 0;
+    text-align:center;
 }
 .apss-promo-buttons a{
-	display:inline-block;
+    display:inline-block;
 }
 
