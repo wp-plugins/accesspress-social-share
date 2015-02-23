@@ -24,6 +24,7 @@ Just get it done in a few minutes!
 `For more options - more social media integration, more themes, floating sidebar options, widget options, more shortcode options. Pinterest pin it button for each images. Please upgrade to Premium version.`
 
 = Free Features: =
+
 * <strong>Beautifully designed 5 themes to select from.</strong> More available in Pro versoin.
 * <strong>Major 6 social media included </strong>(Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg). More available in Pro version.
 * <strong>Latest use of APIs to fetch data</strong>
@@ -43,6 +44,7 @@ Just get it done in a few minutes!
         - Get free updates for lifetime.
 
 = Premium Features: =
+
 * <strong>Beautifully designed 10 themes to select from.</strong>
 * <strong>Major 14 social media included </strong>
         - (Facebook, Twitter, Google+, Pinterest, LinkedIn, Digg, Delicious, Stumbleupon, Tumblr, Vkontakte, Reddit, Xing, Weibo and Buffer).
@@ -57,6 +59,7 @@ Just get it done in a few minutes!
 * <strong>18 major social media </strong> for social count display
 
 = Premium upgrade =
+
 For premium upgrade please go [here](https://accesspressthemes.com/wordpress-plugins/accesspress-social-pro/)
 
 
