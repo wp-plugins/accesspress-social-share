@@ -21,8 +21,9 @@ The available social media are: Facebook, Twitter, Google+, Pinterest, LinkedIn�
 
 Just get it done in a few minutes! 
 
-= Features: =
+`For more options - more social media integration, more themes, floating sidebar options, widget options, more shortcode options. Pinterest pin it button for each images. Please upgrade to Premium version.`
 
+= Free Features: =
 * <strong>Beautifully designed 5 themes to select from.</strong> More available in Pro versoin.
 * <strong>Major 6 social media included </strong>(Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg). More available in Pro version.
 * <strong>Latest use of APIs to fetch data</strong>
@@ -41,6 +42,22 @@ Just get it done in a few minutes!
 * <strong>Free updates</strong>
         - Get free updates for lifetime.
 
+= Premium Features: =
+* <strong>Beautifully designed 10 themes to select from.</strong>
+* <strong>Major 14 social media included </strong>
+        - (Facebook, Twitter, Google+, Pinterest, LinkedIn, Digg, Delicious, Stumbleupon, Tumblr, Vkontakte, Reddit, Xing, Weibo and Buffer).
+* <strong>Popup sharing </strong>
+* <strong>Pinterest image pin options</strong>
+* <strong>Buddypress and woocommerce compactible</strong>
+* <strong>Shortcode</strong> - more parameters available for shortcodes.
+* <strong>Widgets</strong> - Add the AccessPress Social Share in widgets.
+* <strong>Floating Sidebar</strong> - Beautifully designed 4 themes to display in the floating sidebar with various display position options.
+* <strong>Social media fans/followers count display options</strong>
+* <strong>Beautiful 20 themes</strong> for social counts
+* <strong>18 major social media </strong> for social count display
+
+= Premium upgrade =
+For premium upgrade please go [here](https://accesspressthemes.com/wordpress-plugins/accesspress-social-pro/)
 
 
 = Some Useful Links =
@@ -59,6 +76,8 @@ For complete information and documentation regarding plugin, please visit below 
 [Plugin information](https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/)
 
 [Docs](https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/ )
+
+[Demo](http://accesspressthemes.com/demo/wordpress-plugins/accesspress-social-share/)
 
 == Installation ==
 1. Unzip accesspress-social-share.zip
@@ -80,6 +99,8 @@ No , you won't need to get any trouble regarding design and layout of the icons 
 
 = Where can I find the documentation for the plugin? =
 Once you install the plugin , you can check some general documentation about how to use the plugin in the "How to use" panel of the plugin's settings page. Complete documentation can be found  [here](https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/).
+
+
 
 = Can I use AccessPress social share where ever I want? =
 Yes. You can use the AccessPress social share by using shortcode anywhere you want in your templates files or in posts and pages content.
