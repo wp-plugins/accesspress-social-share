@@ -21,7 +21,9 @@ The available social media are: Facebook, Twitter, Google+, Pinterest, LinkedInÂ
 
 Just get it done in a few minutes! 
 
-`For more options - more social media integration, more themes, floating sidebar options, widget options, more shortcode options. Pinterest pin it button for each images. Please upgrade to Premium version.`
+`For more options - more social media integration, more themes, floating 
+sidebar options, widget options, more shortcode options. Pinterest pin
+it button for each images. Please upgrade to Premium version.`
 
 = Free Features: =
 
