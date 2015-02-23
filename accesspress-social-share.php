@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 1.0.4
+Version: 1.0.5
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -31,7 +31,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '1.0.4' );
+	define( 'APSS_VERSION', '1.0.5' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -65,6 +65,7 @@ if( !class_exists( 'APSS_Class' ) ){
 			add_action('admin_post_apss_save_options', array( $this, 'apss_save_options')); //save the options in the wordpress options table.
 			add_action('admin_post_apss_restore_default_settings',array($this,'apss_restore_default_settings'));//restores default settings.
 			add_action('admin_post_apss_clear_cache',array($this,'apss_clear_cache'));//clear the cache of the social share counter.
+            add_shortcode('apss-share', array($this, 'apss_shortcode')); //adds a shortcode
             add_action('wp_ajax_nopriv_frontend_counter', array($this, 'frontend_counter'));
             add_action('wp_ajax_frontend_counter', array($this, 'frontend_counter'));
 		}
@@ -484,7 +485,16 @@ if( !class_exists( 'APSS_Class' ) ){
                 $_SESSION['apss_message'] = __( 'Cache cleared Successfully', APSS_TEXT_DOMAIN );
                 wp_redirect( admin_url() . 'admin.php?page=apss-share' );
             }
-        }    
+        }
+
+        //function for adding shortcode of a plugin
+        function apss_shortcode($attr) {
+            ob_start();
+            include('inc/frontend/shortcode.php');
+            $html = ob_get_contents();
+            ob_get_clean();
+            return $html;
+        }
 
  	}//APSS_Class termination
 

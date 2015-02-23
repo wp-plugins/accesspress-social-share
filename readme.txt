@@ -4,7 +4,7 @@ Tags: social share counter, social share, social media share, social network sha
 Donate link: http://accesspressthemes.com/donation/
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,14 +29,15 @@ Just get it done in a few minutes!
 * <strong>Auto updates on all APIs</strong>
 * <strong>Option to select which social media profile to show</strong>
 * <strong>Display order for selected social media</strong>
-* <strong>Cache setting</strong> - you can set a cache period to avoid frequent API calls
-* <strong>Fully Responsive</strong> - compatible with mobile devices
+* <strong>Cache setting</strong> - you can set a cache period to avoid frequent API calls.
+* <strong>Shortcode</strong> - You can display the social share easily anywhere by using shortcode [apss-share].
+* <strong>Fully Responsive</strong> - compatible with mobile devices.
 * <strong>User friendly and very interactive user interface</strong>
         - Anyone can use it, its as easy as drag and drop.
 * <strong>Upgrades available</strong>
-        - For more features like more social media profiles, more design themes, your own design etc. - upgrade to Pro.  
+        - For more features like more social media profiles, more design themes, etc. - upgrade to Pro.
 * <strong>Support</strong>
-        - Dedicated email, forum support
+        - Dedicated email, forum support.
 * <strong>Free updates</strong>
         - Get free updates for lifetime.
 
@@ -80,6 +81,9 @@ No , you won't need to get any trouble regarding design and layout of the icons 
 = Where can I find the documentation for the plugin? =
 Once you install the plugin , you can check some general documentation about how to use the plugin in the "How to use" panel of the plugin's settings page. Complete documentation can be found  [here](https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/).
 
+= Can I use AccessPress social share where ever I want?
+Yes. You can use the AccessPress social share by using shortcode anywhere you want in your templates files or in posts and pages content.
+
 == Screenshots ==
 1. Frontend Display of Social Share
 2. Frontend Display of Social Share
@@ -89,6 +93,10 @@ Once you install the plugin , you can check some general documentation about how
 6. Backend Miscellaneous Settings Section
 
 == Changelog ==
+= 1.0.5 =
+* Added the shortcode options.
+* fixed small css issue for the twitter share display.
+
 = 1.0.4 =
 * Code modification for the pinterest share options for images.
 * Share count using ajax to store it in cache.
