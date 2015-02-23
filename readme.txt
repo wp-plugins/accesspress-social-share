@@ -81,7 +81,7 @@ No , you won't need to get any trouble regarding design and layout of the icons 
 = Where can I find the documentation for the plugin? =
 Once you install the plugin , you can check some general documentation about how to use the plugin in the "How to use" panel of the plugin's settings page. Complete documentation can be found  [here](https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/).
 
-= Can I use AccessPress social share where ever I want?
+= Can I use AccessPress social share where ever I want? =
 Yes. You can use the AccessPress social share by using shortcode anywhere you want in your templates files or in posts and pages content.
 
 == Screenshots ==
