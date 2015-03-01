@@ -2,7 +2,7 @@
 <div class="apss-wrapper-block">
 <div class="apss-setting-header clearfix">
 	<div class="apss-headerlogo">
-	<img src="<?php echo APSS_IMAGE_DIR; ?>/logo-old.png" alt="<?php esc_attr_e('AccessPress Social Share', 'apss-shares'); ?>" />
+	<img src="<?php echo APSS_IMAGE_DIR; ?>/logo-old.png" alt="<?php esc_attr_e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>" />
 	</div>
 	<div class="apss-header-icons">
                     <p>Follow us for new updates</p>
@@ -104,7 +104,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 		</div>
 
 		<div class=" apss-icon-sets">
-			<h2><?php _e( 'Social icons sets', APSS_TEXT_DOMAIN ); ?> </h2>
+			<h2><?php _e( 'Social icons sets: ', APSS_TEXT_DOMAIN ); ?> </h2>
 			<?php _e('Please choose any one out of available icon themes:', APSS_TEXT_DOMAIN ); ?>
 			<p><input id="apss_icon_set_1" value="1" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='1'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_1"><span class="apss_demo_icon apss_demo_icons_1"></span><?php _e('Theme 1', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme1.jpg';?>"/></div></label></p>
 			<p><input id="apss_icon_set_2" value="2" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='2'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_2"><span class="apss_demo_icon apss_demo_icons_2"></span><?php _e('Theme 2', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme2.jpg';?>"/></div></label></p>
@@ -135,7 +135,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 		</div>
 
 		<div class='cache-settings'>
-			<h4><?php _e( 'Cache Settings', APSS_TEXT_DOMAIN ); ?> </h4>
+			<h4><?php _e( 'Cache Settings: ', APSS_TEXT_DOMAIN ); ?> </h4>
 			<label for="apss_cache_settings"><?php _e( 'Cache Period:', APSS_TEXT_DOMAIN ); ?></label>
 			<input type='text' id="apss_cache_period" name='apss_share_settings[cache_settings]' value="<?php if(isset($options['cache_period'])){ echo $options['cache_period']; } ?>" onkeyup="removeMe('invalid_cache_period');"/>
 			<span class="error invalid_cache_period"></span>

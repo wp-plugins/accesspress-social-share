@@ -6,8 +6,7 @@ $apss_link_open_option=($options['dialog_box_options']=='1') ? "_blank": "";
 $twitter_user=$options['twitter_username'];
 $counter_enable_options=$options['counter_enable_options'];
 $icon_set_value=$options['social_icon_set'];
-$url= $this->curPageURL(); 
-$text= get_the_title();
+$url= $this->curPageURL();
 $cache_period = ($options['cache_period'] != '') ? $options['cache_period']*60*60 : 24 * 60 * 60 ;
 
 if( isset($attr['networks']) ){
@@ -189,7 +188,6 @@ foreach( $options['social_networks'] as $key=>$value ){
 			</div>
 			<?php 
 			break;
-	
 			}
 	}
 

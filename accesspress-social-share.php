@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 1.0.5
+Version: 1.0.6
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -31,7 +31,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '1.0.5' );
+	define( 'APSS_VERSION', '1.0.6' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -67,7 +67,7 @@ if( !class_exists( 'APSS_Class' ) ){
 			add_action('admin_post_apss_clear_cache',array($this,'apss_clear_cache'));//clear the cache of the social share counter.
             add_shortcode('apss-share', array($this, 'apss_shortcode')); //adds a shortcode
             add_action('wp_ajax_nopriv_frontend_counter', array($this, 'frontend_counter'));
-            add_action('wp_ajax_frontend_counter', array($this, 'frontend_counter'));
+            add_action('wp_ajax_frontend_counter', array($this, 'frontend_counter')); // action for ajax counter 
 		}
 
 		//called when plugin is activated
@@ -78,7 +78,7 @@ if( !class_exists( 'APSS_Class' ) ){
 
 			if( !get_option( APSS_COUNT_TRANSIENTS ) ){
 		        $apss_social_counts_transients = array();
-		        update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients);
+		        update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
 		    }
 		}
 
@@ -90,7 +90,7 @@ if( !class_exists( 'APSS_Class' ) ){
 		//add plugins menu in backend
 		function add_apss_menu(){
 			add_menu_page( 'AccessPress Social Share', 'AccessPress Social Share', 'manage_options', 'apss-share', array( $this, 'main_page' ), APSS_IMAGE_DIR . '/apss-icon.png' );
-			add_submenu_page( 'apss-share', __( 'Social Icons Settings', 'apss-share' ), __( 'Social Icons Settings', 'apss-share' ), 'manage_options', 'apss-share', array( $this, 'main_page' ) );
+			add_submenu_page( 'apss-share', __( 'Social Icons Settings', APSS_TEXT_DOMAIN ), __( 'Social Icons Settings', APSS_TEXT_DOMAIN ), 'manage_options', 'apss-share', array( $this, 'main_page' ) );
 		}
 
 		//plugins backend admin page
@@ -100,8 +100,8 @@ if( !class_exists( 'APSS_Class' ) ){
 
 		//for saving the plugin settings
 		function apss_save_options(){
-			if ( isset( $_POST['apss_add_nonce_save_settings'] ) && isset( $_POST['apss_submit_settings'] ) && wp_verify_nonce( $_POST['apss_add_nonce_save_settings'], 'apss_nonce_save_settings') ){  
-			include( 'inc/backend/save-settings.php' );
+			if ( isset( $_POST['apss_add_nonce_save_settings'] ) && isset( $_POST['apss_submit_settings'] ) && wp_verify_nonce( $_POST['apss_add_nonce_save_settings'], 'apss_nonce_save_settings') ){
+			     include( 'inc/backend/save-settings.php' );
 			}
             else
             {
@@ -145,9 +145,7 @@ if( !class_exists( 'APSS_Class' ) ){
 	            $html_content = ob_get_contents();
 	            ob_get_clean();
 
-	             $options = $this->apss_settings;
 				 $share_shows_in_options=$options['share_options'];
-
 				 $all = in_array('all', $options['share_options']);
 				 $is_lists_authorized = (is_search()) && $all ? true : false;
 
@@ -168,32 +166,31 @@ if( !class_exists( 'APSS_Class' ) ){
 
 				 }
 
-				 $is_category = in_array('categories', $options['share_options']);
-				 $default_category=(is_category()) && $is_category ? true : false;
+				 $is_category = in_array( 'categories', $options['share_options'] );
+				 $default_category=( is_category() ) && $is_category ? true : false;
 
-				 $is_default_archive=in_array('archives', $options['share_options']);
-				 $default_archives=( (is_archive() && !is_tax() )&& !is_category() ) && $is_default_archive ? true : false;
+				 $is_default_archive=in_array( 'archives', $options['share_options'] );
+				 $default_archives=( ( is_archive() && !is_tax() )&& !is_category() ) && $is_default_archive ? true : false;
 
-                 if(empty($options['share_options'])){
+                 if( empty($options['share_options']) ){
                     return $post_content;
                  
-                 }else if($is_lists_authorized || $is_singular || $is_tax || $is_front_page || $default_category || $default_archives){
-				 		if ($options['share_positions'] == 'below_content') {
+                 }else if( $is_lists_authorized || $is_singular || $is_tax || $is_front_page || $default_category || $default_archives ){
+				 		if ( $options['share_positions'] == 'below_content' ) {
                             return $post_content . "<div class='apss-social-share apss-theme-$icon_set_value clearfix' >" . $html_content . "</div>";
                         }
 
-                        if ($options['share_positions'] == 'above_content') {
+                        if ( $options['share_positions'] == 'above_content' ) {
                             return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>" . $post_content;
                         }
 
-                        if ($options['share_positions'] == 'on_both') {
+                        if ( $options['share_positions'] == 'on_both' ) {
                             return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>" . $post_content . "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>";
                         }
 
                     } else {
                         return $post_content;
                     }
-
 
 		}
 
@@ -202,15 +199,15 @@ if( !class_exists( 'APSS_Class' ) ){
 			/**
 			 * Backend CSS
 			 * */
-			if(isset($_GET['page']) && $_GET['page']=='apss-share'){
-			wp_enqueue_style( 'aps-admin-css', APSS_CSS_DIR . '/backend.css',false,APSS_VERSION ); //registering plugin admin css
-			wp_enqueue_style( 'fontawesome-css', APSS_CSS_DIR . '/font-awesome.min.css',false,APSS_VERSION );
+			if( isset($_GET['page']) && $_GET['page']=='apss-share' ){
+			wp_enqueue_style( 'aps-admin-css', APSS_CSS_DIR . '/backend.css', false, APSS_VERSION ); //registering plugin admin css
+			wp_enqueue_style( 'fontawesome-css', APSS_CSS_DIR . '/font-awesome.min.css', false, APSS_VERSION );
 
 			/**
 			 * Backend JS
 			 * */
 			wp_enqueue_script( 'jquery-ui-sortable' );
-			wp_enqueue_script( 'apss-admin-js', APSS_JS_DIR . '/backend.js', array('jquery', 'jquery-ui-sortable', 'wp-color-picker'),APSS_VERSION );//registering plugin's admin js
+			wp_enqueue_script( 'apss-admin-js', APSS_JS_DIR . '/backend.js', array( 'jquery', 'jquery-ui-sortable', 'wp-color-picker' ), APSS_VERSION );//registering plugin's admin js
 			}
 		}
 
@@ -218,12 +215,12 @@ if( !class_exists( 'APSS_Class' ) ){
          * Registers Frontend Assets
          * */
         function register_frontend_assets() {
-        	wp_enqueue_style( 'apss-font-awesome',APSS_CSS_DIR.'/font-awesome.min.css',array(),APSS_VERSION );
-        	wp_enqueue_style( 'apss-font-opensans','http://fonts.googleapis.com/css?family=Open+Sans',array(),false);
+        	wp_enqueue_style( 'apss-font-awesome', APSS_CSS_DIR.'/font-awesome.min.css',array(),APSS_VERSION );
+        	wp_enqueue_style( 'apss-font-opensans', 'http://fonts.googleapis.com/css?family=Open+Sans',array(),false);
             wp_enqueue_style( 'apss-frontend-css', APSS_CSS_DIR . '/frontend.css', array( 'apss-font-awesome' ), APSS_VERSION );
             wp_enqueue_script('apss-frontend-mainjs', APSS_JS_DIR . '/frontend.js', array('jquery'), APSS_VERSION, true);
-            $ajax_nonce = wp_create_nonce('apss-ajax-nonce');
-            wp_localize_script('apss-frontend-mainjs', 'frontend_ajax_object', array('ajax_url' => admin_url() . 'admin-ajax.php', 'ajax_nonce' => $ajax_nonce));
+            $ajax_nonce = wp_create_nonce( 'apss-ajax-nonce' );
+            wp_localize_script( 'apss-frontend-mainjs', 'frontend_ajax_object', array( 'ajax_url' => admin_url() . 'admin-ajax.php', 'ajax_nonce' => $ajax_nonce ) );
         }
         
         /**
@@ -239,11 +236,11 @@ if( !class_exists( 'APSS_Class' ) ){
          //function to restore the default setting of a plugin
          function apss_restore_default_settings(){
          	$nonce = $_REQUEST['_wpnonce'];
-	        if(!empty($_GET) && wp_verify_nonce( $nonce, 'apss-restore-default-settings-nonce' ))
+	        if(!empty($_GET) && wp_verify_nonce( $nonce, 'apss-restore-default-settings-nonce' ) )
 	        {
          	//restore the default plugin activation settings from the activation page.
          		include( 'inc/backend/activation.php' );
-		      	$_SESSION['apss_message'] = __( 'Settings restored Successfully.', APSS_TEXT_DOMAIN ); 
+		      	$_SESSION['apss_message'] = __( 'Settings restored Successfully.', APSS_TEXT_DOMAIN );
 				wp_redirect( admin_url().'admin.php?page=apss-share' );
 	          exit;
 	      }else{
@@ -265,20 +262,17 @@ if( !class_exists( 'APSS_Class' ) ){
             //for setting the counter transient in separate options value
             $apss_social_counts_transients = get_option( APSS_COUNT_TRANSIENTS );
             if (false === $fb_transient_count) {
-                $json_string = $this->get_json_values('https://graph.facebook.com/?id=' . $url);
-                $json = json_decode($json_string, true);
-                $facebook_count = isset($json['shares']) ? intval($json['shares']) : 0;
+                $json_string = $this->get_json_values( 'https://graph.facebook.com/?id=' . $url );
+                $json = json_decode( $json_string, true );
+                $facebook_count = isset($json['shares']) ? intval( $json['shares'] ) : 0;
                 set_transient($fb_transient, $facebook_count, $cache_period);
-                if(!in_array( $fb_transient, $apss_social_counts_transients)){
+                if( !in_array( $fb_transient, $apss_social_counts_transients) ){
                     $apss_social_counts_transients[] = $fb_transient;
-                    update_option(APSS_COUNT_TRANSIENTS,$apss_social_counts_transients);    
+                    update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients);
                 }
-                
-
             } else {
                 $facebook_count = $fb_transient_count;
             }
-            
             return $facebook_count;
         }
 
@@ -291,8 +285,6 @@ if( !class_exists( 'APSS_Class' ) ){
 
             //for setting the counter transient in separate options value
             $apss_social_counts_transients = get_option(APSS_COUNT_TRANSIENTS);
-                
-
             if (false === $twitter_transient_count) {
                 $json_string = $this->get_json_values('http://urls.api.twitter.com/1/urls/count.json?url=' . $url);
                 $json = json_decode($json_string, true);
@@ -302,7 +294,6 @@ if( !class_exists( 'APSS_Class' ) ){
                 	$apss_social_counts_transients[] = $twitter_transient;
                 	update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
                 }
-
             } else {
                 $tweet_count = $twitter_transient_count;
             }
@@ -318,7 +309,6 @@ if( !class_exists( 'APSS_Class' ) ){
 
             //for setting the counter transient in separate options value
             $apss_social_counts_transients = get_option(APSS_COUNT_TRANSIENTS);
-                
             if (false === $googlePlus_transient_count) {
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, "https://clients6.google.com/rpc");
@@ -336,10 +326,8 @@ if( !class_exists( 'APSS_Class' ) ){
                 	$apss_social_counts_transients[] = $googlePlus_transient;
                 	update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
                 }
-
             } else {
                 $plusones_count = $googlePlus_transient_count;
-
             }
             return $plusones_count;
         }
@@ -353,8 +341,6 @@ if( !class_exists( 'APSS_Class' ) ){
            
            	//for setting the counter transient in separate options value
            	$apss_social_counts_transients = get_option(APSS_COUNT_TRANSIENTS);
-                
-
             if (false === $pinterest_transient_count) {
                 $json_string = $this->get_json_values('http://api.pinterest.com/v1/urls/count.json?url=' . $url);
                 $json_string = preg_replace('/^receiveCount\((.*)\)$/', "\\1", $json_string);
@@ -391,10 +377,8 @@ if( !class_exists( 'APSS_Class' ) ){
                 	$apss_social_counts_transients[] = $linkedin_transient;
                 	update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
                 }
-
             } else {
                 $linkedin_count = $linkedin_transient_count;
-
             }
             return $linkedin_count;
         }
@@ -404,14 +388,13 @@ if( !class_exists( 'APSS_Class' ) ){
          private function get_json_values( $url ){
          	$apss_settings = $this->apss_settings;
             $cache_period = $apss_settings['cache_period']*60*60;
-            $args = array('timeout' => 10);
-            $response = wp_remote_get($url, $args);
-            $json_response = wp_remote_retrieve_body($response);
+            $args = array( 'timeout' => 10 );
+            $response = wp_remote_get( $url, $args );
+            $json_response = wp_remote_retrieve_body( $response );
             return $json_response;
     	}
 
          ////////////////////////////////////for count ends here/////////////////////////////////////////////
-
     	 function get_count($profile_name, $url) {
             switch ($profile_name) {
                 case 'facebook':
@@ -443,7 +426,7 @@ if( !class_exists( 'APSS_Class' ) ){
 
 
         function frontend_counter() {
-            if (!empty($_GET) && wp_verify_nonce($_GET['_wpnonce'], 'apss-ajax-nonce')) {
+            if (!empty($_GET) && wp_verify_nonce( $_GET['_wpnonce'], 'apss-ajax-nonce' ) ) {
                 $apss_settings = $this->apss_settings;
                 $new_detail_array = array();
                 if (isset($_POST['data'])) {
@@ -460,7 +443,7 @@ if( !class_exists( 'APSS_Class' ) ){
                         $new_detail_array[] = $this->get_count($network, $url);
                     }
                 }
-                die(json_encode($new_detail_array));
+                die( json_encode( $new_detail_array ) );
             }
         }
 
@@ -472,7 +455,6 @@ if( !class_exists( 'APSS_Class' ) ){
         function apss_clear_cache() {
             if (!empty($_GET) && wp_verify_nonce($_GET['_wpnonce'], 'apss-clear-cache-nonce')) {
             	$apss_settings = $this->apss_settings;
-
             	$apss_social_counts_transients = get_option(APSS_COUNT_TRANSIENTS);
             	 foreach ($apss_social_counts_transients as $transient) {
                     delete_transient($transient);

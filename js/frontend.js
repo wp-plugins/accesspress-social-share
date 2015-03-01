@@ -7,6 +7,8 @@ jQuery(document).ready(function ($) {
             shortcode_profile_array.push(social_detail);
         }
     });
+
+    // ajax call for social counter 
     if (shortcode_profile_array.length > 0)
             {
                 $.ajax({

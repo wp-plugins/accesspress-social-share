@@ -4,7 +4,7 @@
 
 		<p>AccessPress Themes is a venture of Access Keys - who has developed hundreds of Custom WordPress themes and plugins for its clients over the years. </p>
 
-		<p><strong>AccessPress Social Share</strong> - is plugin to allow anyone easily share website content (pages, posts) on major social media (Facebook, Twitter… ). A perfect plugin to make any content on your website social-share-friendly, and increase your social reach dramatically! </p>
+		<p><strong>AccessPress Social Share</strong> - is plugin to allow anyone easily share website content (pages, posts) on major social media (Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg). A perfect plugin to make any content on your website social-share-friendly, and increase your social reach dramatically! </p>
 		<div class="halfseperator"></div>
 		<p><strong>Please visit our product page for more details here:</strong><br />
 			<a href="http://accesspressthemes.com/wordpress-plugins/accesspress-social-share/" target="_blank">http://accesspressthemes.com/wordpress-plugins/accesspress-social-share/</a></p>
@@ -24,14 +24,14 @@
 							<h3>Other products by AccessPress themes </h3>
 							<div class="other-products-inner">
 								<div class="product">
-								<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/aplite.png" alt="<?php esc_attr_e('AccessPress Social Share','social-share'); ?>" /></div>
+								<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/aplite.png" alt="<?php esc_attr_e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>" /></div>
 								<div class="productext"><p><strong>AccessPress Lite</strong> - A very popular Free WordPress theme, available in WordPress.org<br />
 									<a href="http://accesspressthemes.com/wordpress-themes/accesspress-lite/" target="_blank">http://accesspressthemes.com/wordpress-themes/accesspress-lite/</a></p>
 								</div>
 								</div>
 
 								<div class="product">
-								<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/appro.png" alt="<?php esc_attr_e('AccessPress Social Share','social-share'); ?>" /></div>
+								<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/appro.png" alt="<?php esc_attr_e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>" /></div>
 								<div class="productext"><p><strong>AccessPress Pro</strong> - Premium version of AccessPress lite<br />
 									<a href="http://accesspressthemes.com/wordpress-themes/accesspress-lite/" target="_blank">http://accesspressthemes.com/wordpress-themes/accesspress-pro/</a></p>
 								</div>
