@@ -13,7 +13,7 @@
 .clearfix:after{ clear:both};
 .clearfix{*zoom:1}
 
-*{ box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+/**{ box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}*/
 
 a:hover, a:focus {
     color: #636363;
@@ -66,6 +66,9 @@ a:hover, a:focus {
     position: relative;
     background-color: #f7f7f7;
     width: 86px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .apss-theme-1 .apss-icon-block:before{
@@ -113,6 +116,9 @@ a:hover, a:focus {
     margin-left:-30px;
     opacity:0;
     filter: alpha(opacity=0);/*ie8*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
 
     transition: all 0.5s ease-in-out;
@@ -258,6 +264,9 @@ a:hover, a:focus {
     padding: 3px 0;
     position:relative;
     height:35px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
     transition: all 0.5s ease-in-out;
 	-webkit-transition:all 0.5s ease-in-out;
@@ -294,6 +303,10 @@ a:hover, a:focus {
     line-height: 29px;
     vertical-align: middle;
     padding: 3px 9px;
+    margin:0 0 0 -4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .apss-theme-2 .apss-facebook .fa{
@@ -409,7 +422,9 @@ a:hover, a:focus {
     text-align: center;
     top: 0;
     z-index: 1;
-
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     transition: all 0.5s ease-in-out;
 	-webkit-transition:all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -481,6 +496,9 @@ a:hover, a:focus {
     padding: 8px 0 0;
    	/*padding: 8px 0px 8px 0px;*/
     position:relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .apss-theme-3 .apss-social-text {
@@ -499,6 +517,9 @@ a:hover, a:focus {
     -moz-transition: opacity 0.8s ease-in-out;
     -o-transition:opacity 0.8s ease-in-out;
     -ms-transition:opacity 0.8s ease-in-out;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .apss-theme-3 .apss-single-icon a:hover .apss-social-text {
@@ -537,6 +558,9 @@ a:hover, a:focus {
     right: 0;*/
     width: auto;
     font-size:14px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .apss-theme-3 .apss-single-icon.apss-print a:hover .count{
@@ -613,6 +637,7 @@ a:hover, a:focus {
     margin: 0 auto;
     position: relative;
     width: 36px;
+    height:36px;
 }
 
 .apss-theme-4 .apss-single-icon .fa{
@@ -628,6 +653,9 @@ a:hover, a:focus {
     -moz-transition: all 0.5s ease-in-out;
     -o-transition:all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .apss-theme-4 .apss-social-text {
@@ -728,6 +756,9 @@ a:hover, a:focus {
     padding: 9px;
     position: relative;
     width: 76px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /*.apss-theme-5 .apss-single-icon a:after {
@@ -784,6 +815,9 @@ a:hover, a:focus {
     line-height: 1;
     padding: 3px 0 2px;
     text-transform: capitalize;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .apss-theme-5 .count{
