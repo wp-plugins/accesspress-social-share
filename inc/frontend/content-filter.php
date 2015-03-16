@@ -92,7 +92,8 @@ foreach( $options['social_networks'] as $key=>$value ){
 			
 			//couter available for linkedin
 			case 'linkedin':
-			$link = "http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=JuizSocialPostSharer&amp;title=".$title."&amp;url=".$url;
+			$link = "http://www.linkedin.com/shareArticle?mini=true&amp;title=".$title."&amp;url=".$url."&amp;summary=".$excerpt;
+			
 			?>
 			<div class='apss-linkedin apss-single-icon'>
 			<a title='Share on LinkedIn' target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>

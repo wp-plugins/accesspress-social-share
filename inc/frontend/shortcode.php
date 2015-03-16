@@ -6,7 +6,7 @@ $apss_link_open_option=($options['dialog_box_options']=='1') ? "_blank": "";
 $twitter_user=$options['twitter_username'];
 $counter_enable_options=$options['counter_enable_options'];
 $icon_set_value=$options['social_icon_set'];
-$url= $this->curPageURL();
+$url= get_permalink(); //$this->curPageURL();
 $cache_period = ($options['cache_period'] != '') ? $options['cache_period']*60*60 : 24 * 60 * 60 ;
 
 if( isset($attr['networks']) ){
@@ -25,8 +25,12 @@ if( isset($attr['networks']) ){
 <?php
 
 $title=get_the_title();
-$content=strip_tags(get_the_content());
-$excerpt= substr($content, 0, 50 );
+$content=strip_shortcodes(strip_tags(get_the_content()));
+if(strlen($content) >= 100){
+$excerpt= substr($content, 0, 100).'...';
+}else{
+	$excerpt = $content;
+}
 
 foreach( $options['social_networks'] as $key=>$value ){
 	if( intval($value)=='1' ){
@@ -94,9 +98,6 @@ foreach( $options['social_networks'] as $key=>$value ){
 
 			//counter available for pinterest
 			case 'pinterest':
-			// if(has_post_thumbnail()){
-			// $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-			// $link = 'http://pinterest.com/pin/create/bookmarklet/?media='.$image[0].'&amp;url='.$url.'&amp;title='.$title.'&amp;description='.$excerpt;
 			?>
 
 			<div class='apss-pinterest apss-single-icon'>
@@ -114,12 +115,11 @@ foreach( $options['social_networks'] as $key=>$value ){
 				</a>
 			</div>
 			<?php
-			//}
 			break;
 			
 			//couter available for linkedin
 			case 'linkedin':
-			$link = "http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=JuizSocialPostSharer&amp;title=".$title."&amp;url=".$url;
+			$link = "http://www.linkedin.com/shareArticle?mini=true&amp;title=".$title."&amp;url=".$url."&amp;summary=".$excerpt;
 			?>
 			<div class='apss-linkedin apss-single-icon'>
 			<a title='Share on LinkedIn' target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
