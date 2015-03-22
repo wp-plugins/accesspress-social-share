@@ -11,7 +11,7 @@
   <dd><p>In this tab you can customize the apperance of the social media share icons. You can choose the options to display the share icons below the contennt, above the content or you can choose an options to display in both below and above content. Also you can choose the theme from the pre available 5 themes.</p></dd>
   
   <dt><strong>Miscellaneous settings</strong></dt>
-  <dd><p>In this tab you can do the additions settings for the plugin.
+  <dd><p>In this tab you can do the additional settings for the plugin.
     <ul class="how-list">
       <li><i class="fa fa-check"></i>You can setup the twitter username.</li>
       <li><i class="fa fa-check"></i>You can enable/disable the social counter.</li>
@@ -26,7 +26,7 @@
     <ul class="how-list">
       <li><i class="fa fa-check"></i>Example 1: [apss-share]</li>
       <li><i class="fa fa-check"></i>Example 2: [apss-share networks='facebook, twitter, pinterest']</li>
-      <li><i class="fa fa-check"></i>network parameters are: facebook, twitter, google-plus, pinterest, linkedin, digg, email, print</li>
+      <li><i class="fa fa-check"></i>Available network parameters are: facebook, twitter, google-plus, pinterest, linkedin, digg, email, print</li>
       </ul>
   </p></dd>
   
