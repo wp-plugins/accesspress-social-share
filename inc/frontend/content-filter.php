@@ -68,7 +68,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 			</div>
 			<?php
 			break;
-
+			
 			//counter available for pinterest
 			case 'pinterest':
 			?>
@@ -87,14 +87,13 @@ foreach( $options['social_networks'] as $key=>$value ){
 				</a>
 			</div>
 			<?php
-			//}
 			break;
 			
 			//couter available for linkedin
 			case 'linkedin':
 			$link = "http://www.linkedin.com/shareArticle?mini=true&amp;title=".$title."&amp;url=".$url."&amp;summary=".$excerpt;
-			
 			?>
+
 			<div class='apss-linkedin apss-single-icon'>
 			<a title='Share on LinkedIn' target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
 				<div class='apss-icon-block clearfix'><i class='fa fa-linkedin'></i>
@@ -158,7 +157,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 					</div>
 				</a>
 			</div>
-			<?php 
+			<?php
 			break;
 
 			}

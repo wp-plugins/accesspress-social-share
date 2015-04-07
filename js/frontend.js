@@ -1,4 +1,5 @@
-//https://halgatewood.com/how-to-customize-the-pin-it-button-for-pinterest
+
+//function from https://halgatewood.com/how-to-customize-the-pin-it-button-for-pinterest
 function pinIt()
 {
   var e = document.createElement('script');
@@ -18,7 +19,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // ajax call for social counter 
+    // ajax call for social counter
     if (shortcode_profile_array.length > 0)
             {
                 $.ajax({

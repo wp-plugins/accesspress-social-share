@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 1.1.0
+Version: 1.1.1
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -31,7 +31,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '1.1.0' );
+	define( 'APSS_VERSION', '1.1.1' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -59,7 +59,7 @@ if( !class_exists( 'APSS_Class' ) ){
 			add_action('init',array( $this,'session_init')); //start the session if not started yet.
 			add_action('admin_enqueue_scripts', array($this, 'register_admin_assets')); //registers all the assets required for wp-admin
 			add_filter( 'the_content', array($this, 'apss_the_content_filter' )); // add the filter function for display of social share icons in frontend
-			add_filter( 'the_excerpt', array($this, 'apss_the_content_filter' )); // add the filter function for display of social share icons in frontend
+			//add_filter( 'the_excerpt', array($this, 'apss_the_content_filter' )); // add the filter function for display of social share icons in frontend
 			add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_assets' ) ); // registers all the assets required for the frontend
 			add_action( 'admin_menu', array( $this, 'add_apss_menu' ) ); //register the plugin menu in backend
 			add_action('admin_post_apss_save_options', array( $this, 'apss_save_options')); //save the options in the wordpress options table.
