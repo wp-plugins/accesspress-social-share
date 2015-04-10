@@ -47,18 +47,31 @@ it button for each images. Please upgrade to Premium version.`
 
 = Premium Features: =
 
-* <strong>Beautifully designed 10 themes to select from.</strong>
-* <strong>Major 14 social media included </strong>
-        - (Facebook, Twitter, Google+, Pinterest, LinkedIn, Digg, Delicious, Stumbleupon, Tumblr, Vkontakte, Reddit, Xing, Weibo and Buffer).
-* <strong>Popup sharing </strong>
-* <strong>Pinterest image pin options</strong>
-* <strong>Buddypress and woocommerce compactible</strong>
-* <strong>Shortcode</strong> - more parameters available for shortcodes.
-* <strong>Widgets</strong> - Add the AccessPress Social Share in widgets.
-* <strong>Floating Sidebar</strong> - Beautifully designed 4 themes to display in the floating sidebar with various display position options.
-* <strong>Social media fans/followers count display options</strong>
-* <strong>Beautiful 20 themes</strong> for social counts
-* <strong>18 major social media </strong> for social count display
+	★ <strong>Beautifully designed 10 themes to select from.</strong>
+
+	★ <strong>Major 14 social media included </strong>
+
+        - (Facebook, Twitter, Google+, Pinterest, LinkedIn, Digg, Delicious, 
+        Stumbleupon, Tumblr, Vkontakte, Reddit, Xing, Weibo and Buffer).
+
+	★ <strong>Popup sharing </strong>
+
+	★ <strong>Pinterest image pin options</strong>
+
+	★ <strong>Buddypress and woocommerce compactible</strong>
+
+	★ <strong>Shortcode</strong> - more parameters available for shortcodes.
+
+	★ <strong>Widgets</strong> - Add the AccessPress Social Share in widgets.
+
+	★ <strong>Floating Sidebar</strong> - Beautifully designed 4 themes to 
+	display in the floating sidebar with various display position options.
+
+	★ <strong>Social media fans/followers count display options</strong>
+
+	★ <strong>Beautiful 20 themes</strong> for social counts
+	
+	★ <strong>18 major social media </strong> for social count display
 
 = Premium upgrade =
 
