@@ -15,6 +15,7 @@ $social_networks=array('facebook'=>'1',
                       'print'=>'0',
                       );
 $apss_share_settings['social_networks']=$social_networks;
+$apss_share_settings['share_text'] = '';
 $apss_share_settings['twitter_username'] = '';
 $apss_share_settings['counter_enable_options']='0';
 $apss_share_settings['cache_period']='24';

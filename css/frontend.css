@@ -983,6 +983,14 @@ a:hover, a:focus {
 	display:none;
 }
 
+.apss-share-text{
+  opacity: 0.4;
+  line-height: 16px;
+  color: #333;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
+
 
 /************************************************responsive*************************************************************/
 
@@ -1004,4 +1012,6 @@ a:hover, a:focus {
 }
 
 }
+
+
 

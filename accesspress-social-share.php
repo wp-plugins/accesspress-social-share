@@ -1,10 +1,10 @@
-<?php 
+<?php
 defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 /*
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 1.1.1
+Version: 1.1.2
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -31,7 +31,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '1.1.1' );
+	define( 'APSS_VERSION', '1.1.2' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -87,35 +87,196 @@ if( !class_exists( 'APSS_Class' ) ){
 			load_plugin_textdomain( APSS_TEXT_DOMAIN, false, APSS_LANG_DIR);
 		}
 
-		//add plugins menu in backend
-		function add_apss_menu(){
-			add_menu_page( 'AccessPress Social Share', 'AccessPress Social Share', 'manage_options', 'apss-share', array( $this, 'main_page' ), APSS_IMAGE_DIR . '/apss-icon.png' );
-			add_submenu_page( 'apss-share', __( 'Social Icons Settings', APSS_TEXT_DOMAIN ), __( 'Social Icons Settings', APSS_TEXT_DOMAIN ), 'manage_options', 'apss-share', array( $this, 'main_page' ) );
-		}
-
-		//plugins backend admin page
-		function main_page() {
-			include('inc/backend/main-page.php');
-		}
-
-		//for saving the plugin settings
-		function apss_save_options(){
-			if ( isset( $_POST['apss_add_nonce_save_settings'] ) && isset( $_POST['apss_submit_settings'] ) && wp_verify_nonce( $_POST['apss_add_nonce_save_settings'], 'apss_nonce_save_settings') ){
-			     include( 'inc/backend/save-settings.php' );
-			}
-            else
-            {
-                die('No script kiddies please!');
-            }
-		}
-
-		//starts the session with the call of init hook
+        //starts the session with the call of init hook
         function session_init(){
             if( !session_id() )
             {
                 session_start();
             }
         }
+
+        //functions to register frontend styles and scripts
+        function register_admin_assets(){
+            /**
+             * Backend CSS
+             * */
+            if( isset($_GET['page']) && $_GET['page']=='apss-share' ){
+            wp_enqueue_style( 'aps-admin-css', APSS_CSS_DIR . '/backend.css', false, APSS_VERSION ); //registering plugin admin css
+            wp_enqueue_style( 'fontawesome-css', APSS_CSS_DIR . '/font-awesome.min.css', false, APSS_VERSION );
+
+            /**
+             * Backend JS
+             * */
+            wp_enqueue_script( 'jquery-ui-sortable' );
+            wp_enqueue_script( 'apss-admin-js', APSS_JS_DIR . '/backend.js', array( 'jquery', 'jquery-ui-sortable', 'wp-color-picker' ), APSS_VERSION );//registering plugin's admin js
+            }
+        }
+
+        //function to return the content filter for the posts and pages
+        function apss_the_content_filter( $content ) {
+                global $post;
+                $post_content=$content;
+                $title = get_the_title();
+                $content=strip_shortcodes( strip_tags( get_the_content() ) );
+                if(strlen($content) >= 100){
+                $excerpt= substr($content, 0, 100).'...';
+                }else{
+                    $excerpt = $content;
+                }
+                $options = $this->apss_settings;
+                ob_start();
+                include('inc/frontend/content-filter.php');
+                $html_content = ob_get_contents();
+                ob_get_clean();
+
+                 $share_shows_in_options=$options['share_options'];
+                 $all = in_array('all', $options['share_options']);
+                 $is_lists_authorized = (is_search()) && $all ? true : false;
+
+                 $all = in_array('all', $options['share_options']);
+                 $is_lists_authorized = (is_search()) && $all ? true : false;
+                 
+                 $front_page = in_array('front_page', $options['share_options']);
+                 $is_front_page=(is_front_page()) && $front_page ? true : false;
+                 
+                 $share_shows_in_options=$options['share_options'];
+                 $is_singular = is_singular($share_shows_in_options) && !is_front_page() ? true : false;
+
+                 if(!empty($share_shows_in_options)){
+                    $is_tax =is_tax($share_shows_in_options);
+
+                 }else{
+                    $is_tax=false;
+
+                 }
+
+                 $is_category = in_array( 'categories', $options['share_options'] );
+                 $default_category=( is_category() ) && $is_category ? true : false;
+
+                 $is_default_archive=in_array( 'archives', $options['share_options'] );
+                 $default_archives=( ( is_archive() && !is_tax() )&& !is_category() ) && $is_default_archive ? true : false;
+
+                 if( empty($options['share_options']) ){
+                    return $post_content;
+                 
+                 }else if( $is_lists_authorized || $is_singular || $is_tax || $is_front_page || $default_category || $default_archives ){
+                        if ( $options['share_positions'] == 'below_content' ) {
+                            return $post_content . "<div class='apss-social-share apss-theme-$icon_set_value clearfix' >" . $html_content . "</div>";
+                        }
+
+                        if ( $options['share_positions'] == 'above_content' ) {
+                            return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>" . $post_content;
+                        }
+
+                        if ( $options['share_positions'] == 'on_both' ) {
+                            return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>" . $post_content . "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>";
+                        }
+
+                    } else {
+                        return $post_content;
+                    }
+        }
+
+         /**
+         * Registers Frontend Assets
+         * */
+        function register_frontend_assets() {
+            wp_enqueue_style( 'apss-font-awesome', APSS_CSS_DIR.'/font-awesome.min.css',array(),APSS_VERSION );
+            wp_enqueue_style( 'apss-font-opensans', 'http://fonts.googleapis.com/css?family=Open+Sans',array(),false);
+            wp_enqueue_style( 'apss-frontend-css', APSS_CSS_DIR . '/frontend.css', array( 'apss-font-awesome' ), APSS_VERSION );
+            wp_enqueue_script('apss-frontend-mainjs', APSS_JS_DIR . '/frontend.js', array('jquery'), APSS_VERSION, true);
+            $ajax_nonce = wp_create_nonce( 'apss-ajax-nonce' );
+            wp_localize_script( 'apss-frontend-mainjs', 'frontend_ajax_object', array( 'ajax_url' => admin_url() . 'admin-ajax.php', 'ajax_nonce' => $ajax_nonce ) );
+        }
+
+		//add plugins menu in backend
+		function add_apss_menu(){
+			add_menu_page( 'AccessPress Social Share', 'AccessPress Social Share', 'manage_options', 'apss-share', array( $this, 'main_page' ), APSS_IMAGE_DIR . '/apss-icon.png' );
+			add_submenu_page( 'apss-share', __( 'Social Icons Settings', APSS_TEXT_DOMAIN ), __( 'Social Icons Settings', APSS_TEXT_DOMAIN ), 'manage_options', 'apss-share', array( $this, 'main_page' ) );
+		}
+
+        //for saving the plugin settings
+        function apss_save_options(){
+            if ( isset( $_POST['apss_add_nonce_save_settings'] ) && isset( $_POST['apss_submit_settings'] ) && wp_verify_nonce( $_POST['apss_add_nonce_save_settings'], 'apss_nonce_save_settings') ){
+                 include( 'inc/backend/save-settings.php' );
+            }
+            else
+            {
+                die('No script kiddies please!');
+            }
+        }
+
+        //function to restore the default setting of a plugin
+        function apss_restore_default_settings(){
+            $nonce = $_REQUEST['_wpnonce'];
+                if(!empty($_GET) && wp_verify_nonce( $nonce, 'apss-restore-default-settings-nonce' ) )
+                    {
+                    //restore the default plugin activation settings from the activation page.
+                    include( 'inc/backend/activation.php' );
+                    $_SESSION['apss_message'] = __( 'Settings restored Successfully.', APSS_TEXT_DOMAIN );
+                    wp_redirect( admin_url().'admin.php?page=apss-share' );
+                    exit;
+                }else{
+                    die( 'No script kiddies please!' );
+                }
+        }
+
+         /**
+         * Clears the social share counter cache
+         */
+        function apss_clear_cache() {
+            if (!empty($_GET) && wp_verify_nonce($_GET['_wpnonce'], 'apss-clear-cache-nonce')) {
+                $apss_settings = $this->apss_settings;
+                $apss_social_counts_transients = get_option(APSS_COUNT_TRANSIENTS);
+                 foreach ($apss_social_counts_transients as $transient) {
+                    delete_transient($transient);
+                }
+                update_option( APSS_COUNT_TRANSIENTS, array() );
+                $transient_array = array('apss_tweets_count', 'apss_linkedin_count', 'apss_fb_count', 'apss_pin_count', 'apss_google_plus_count', 'apss_stumble_count', 'apss_delicious_count', 'apss_reddit_count');
+                foreach ($transient_array as $transient) {
+                    delete_transient($transient);
+                }
+                $_SESSION['apss_message'] = __( 'Cache cleared Successfully', APSS_TEXT_DOMAIN );
+                wp_redirect( admin_url() . 'admin.php?page=apss-share' );
+            }
+        }
+
+        //function for adding shortcode of a plugin
+        function apss_shortcode($attr) {
+            ob_start();
+            include('inc/frontend/shortcode.php');
+            $html = ob_get_contents();
+            ob_get_clean();
+            return $html;
+        }
+
+        //frontend counter
+        function frontend_counter() {
+            if (!empty($_GET) && wp_verify_nonce( $_GET['_wpnonce'], 'apss-ajax-nonce' ) ) {
+                $apss_settings = $this->apss_settings;
+                $new_detail_array = array();
+                if (isset($_POST['data'])) {
+                    $details = $_POST['data'];
+                    foreach ($details as $detail) {
+                        $new_detail_array[$detail['network']] = $this->get_count($detail['network'], $detail['url']);
+                    }
+                } else {
+                    $shortcode_data = $_POST['shortcode_data'];
+                    foreach ($shortcode_data as $detail) {
+                        $detail_array = explode('_', $detail);
+                        $url = trim($detail_array[0]);
+                        $network = $detail_array[1];
+                        $new_detail_array[] = $this->get_count($network, $url);
+                    }
+                }
+                die( json_encode( $new_detail_array ) );
+            }
+        }
+
+		//plugins backend admin page
+		function main_page() {
+			include('inc/backend/main-page.php');
+		}
 
         //returns the current page url
         function curPageURL() {
@@ -131,102 +292,7 @@ if( !class_exists( 'APSS_Class' ) ){
             }
             return $pageURL;
         }
-
-        //function to return the content filter for the posts and pages
-		function apss_the_content_filter( $content ) {
-				global $post;
-                $post_content=$content;
-	            $title = get_the_title();
-	            $content=strip_shortcodes( strip_tags( get_the_content() ) );
-	            if(strlen($content) >= 100){
-                $excerpt= substr($content, 0, 100).'...';
-                }else{
-                    $excerpt = $content;
-                }
-	            $options = $this->apss_settings;
-	            ob_start();
-	            include('inc/frontend/content-filter.php');
-	            $html_content = ob_get_contents();
-	            ob_get_clean();
-
-				 $share_shows_in_options=$options['share_options'];
-				 $all = in_array('all', $options['share_options']);
-				 $is_lists_authorized = (is_search()) && $all ? true : false;
-
-				 $all = in_array('all', $options['share_options']);
-				 $is_lists_authorized = (is_search()) && $all ? true : false;
-				 
-				 $front_page = in_array('front_page', $options['share_options']);
-				 $is_front_page=(is_front_page()) && $front_page ? true : false;
-				 
-				 $share_shows_in_options=$options['share_options'];
-				 $is_singular = is_singular($share_shows_in_options) && !is_front_page() ? true : false;
-
-				 if(!empty($share_shows_in_options)){
-				 	$is_tax =is_tax($share_shows_in_options);
-
-				 }else{
-				 	$is_tax=false;
-
-				 }
-
-				 $is_category = in_array( 'categories', $options['share_options'] );
-				 $default_category=( is_category() ) && $is_category ? true : false;
-
-				 $is_default_archive=in_array( 'archives', $options['share_options'] );
-				 $default_archives=( ( is_archive() && !is_tax() )&& !is_category() ) && $is_default_archive ? true : false;
-
-                 if( empty($options['share_options']) ){
-                    return $post_content;
-                 
-                 }else if( $is_lists_authorized || $is_singular || $is_tax || $is_front_page || $default_category || $default_archives ){
-				 		if ( $options['share_positions'] == 'below_content' ) {
-                            return $post_content . "<div class='apss-social-share apss-theme-$icon_set_value clearfix' >" . $html_content . "</div>";
-                        }
-
-                        if ( $options['share_positions'] == 'above_content' ) {
-                            return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>" . $post_content;
-                        }
-
-                        if ( $options['share_positions'] == 'on_both' ) {
-                            return "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>" . $post_content . "<div class='apss-social-share apss-theme-$icon_set_value clearfix'>$html_content</div>";
-                        }
-
-                    } else {
-                        return $post_content;
-                    }
-
-		}
-
-        //functions to register frontend styles and scripts
-		function register_admin_assets(){
-			/**
-			 * Backend CSS
-			 * */
-			if( isset($_GET['page']) && $_GET['page']=='apss-share' ){
-			wp_enqueue_style( 'aps-admin-css', APSS_CSS_DIR . '/backend.css', false, APSS_VERSION ); //registering plugin admin css
-			wp_enqueue_style( 'fontawesome-css', APSS_CSS_DIR . '/font-awesome.min.css', false, APSS_VERSION );
-
-			/**
-			 * Backend JS
-			 * */
-			wp_enqueue_script( 'jquery-ui-sortable' );
-			wp_enqueue_script( 'apss-admin-js', APSS_JS_DIR . '/backend.js', array( 'jquery', 'jquery-ui-sortable', 'wp-color-picker' ), APSS_VERSION );//registering plugin's admin js
-			}
-		}
-
-		 /**
-         * Registers Frontend Assets
-         * */
-        function register_frontend_assets() {
-        	wp_enqueue_style( 'apss-font-awesome', APSS_CSS_DIR.'/font-awesome.min.css',array(),APSS_VERSION );
-        	wp_enqueue_style( 'apss-font-opensans', 'http://fonts.googleapis.com/css?family=Open+Sans',array(),false);
-            wp_enqueue_style( 'apss-frontend-css', APSS_CSS_DIR . '/frontend.css', array( 'apss-font-awesome' ), APSS_VERSION );
-            wp_enqueue_script('apss-frontend-mainjs', APSS_JS_DIR . '/frontend.js', array('jquery'), APSS_VERSION, true);
-            $ajax_nonce = wp_create_nonce( 'apss-ajax-nonce' );
-            wp_localize_script( 'apss-frontend-mainjs', 'frontend_ajax_object', array( 'ajax_url' => admin_url() . 'admin-ajax.php', 'ajax_nonce' => $ajax_nonce ) );
-        }
-        
+		
         /**
          * Funciton to print array in pre format
          * */
@@ -237,23 +303,7 @@ if( !class_exists( 'APSS_Class' ) ){
             echo "</pre>";
          }
 
-         //function to restore the default setting of a plugin
-         function apss_restore_default_settings(){
-         	$nonce = $_REQUEST['_wpnonce'];
-	        if(!empty($_GET) && wp_verify_nonce( $nonce, 'apss-restore-default-settings-nonce' ) )
-	        {
-         	//restore the default plugin activation settings from the activation page.
-         		include( 'inc/backend/activation.php' );
-		      	$_SESSION['apss_message'] = __( 'Settings restored Successfully.', APSS_TEXT_DOMAIN );
-				wp_redirect( admin_url().'admin.php?page=apss-share' );
-	          exit;
-	      }else{
-	      	 die( 'No script kiddies please!' );
-	      }
-
-         }
-
-////////////////////////////////////for count //////////////////////////////////////////////////////
+        ////////////////////////////////////for count //////////////////////////////////////////////////////
         //for facebook url share count
         function get_fb($url) {
             $apss_settings = $this->apss_settings;
@@ -385,9 +435,8 @@ if( !class_exists( 'APSS_Class' ) ){
             return $linkedin_count;
         }
 
-
-         //function to return json values from social media urls
-         private function get_json_values( $url ){
+        //function to return json values from social media urls
+        private function get_json_values( $url ){
          	$apss_settings = $this->apss_settings;
             $cache_period = $apss_settings['cache_period']*60*60;
             $args = array( 'timeout' => 10 );
@@ -395,9 +444,9 @@ if( !class_exists( 'APSS_Class' ) ){
             $json_response = wp_remote_retrieve_body( $response );
             return $json_response;
     	}
+        ////////////////////////////////////for count ends here/////////////////////////////////////////////
 
-         ////////////////////////////////////for count ends here/////////////////////////////////////////////
-    	 function get_count($profile_name, $url) {
+    	function get_count($profile_name, $url) {
             switch ($profile_name) {
                 case 'facebook':
                     $count = $this->get_fb($url);
@@ -426,62 +475,7 @@ if( !class_exists( 'APSS_Class' ) ){
             return $count;
         }
 
-
-        function frontend_counter() {
-            if (!empty($_GET) && wp_verify_nonce( $_GET['_wpnonce'], 'apss-ajax-nonce' ) ) {
-                $apss_settings = $this->apss_settings;
-                $new_detail_array = array();
-                if (isset($_POST['data'])) {
-                    $details = $_POST['data'];
-                    foreach ($details as $detail) {
-                        $new_detail_array[$detail['network']] = $this->get_count($detail['network'], $detail['url']);
-                    }
-                } else {
-                    $shortcode_data = $_POST['shortcode_data'];
-                    foreach ($shortcode_data as $detail) {
-                        $detail_array = explode('_', $detail);
-                        $url = trim($detail_array[0]);
-                        $network = $detail_array[1];
-                        $new_detail_array[] = $this->get_count($network, $url);
-                    }
-                }
-                die( json_encode( $new_detail_array ) );
-            }
-        }
-
-
-
-         /**
-         * Clears the social share counter cache 
-         */
-        function apss_clear_cache() {
-            if (!empty($_GET) && wp_verify_nonce($_GET['_wpnonce'], 'apss-clear-cache-nonce')) {
-            	$apss_settings = $this->apss_settings;
-            	$apss_social_counts_transients = get_option(APSS_COUNT_TRANSIENTS);
-            	 foreach ($apss_social_counts_transients as $transient) {
-                    delete_transient($transient);
-                }
-                update_option( APSS_COUNT_TRANSIENTS, array() );
-                $transient_array = array('apss_tweets_count', 'apss_linkedin_count', 'apss_fb_count', 'apss_pin_count', 'apss_google_plus_count', 'apss_stumble_count', 'apss_delicious_count', 'apss_reddit_count');
-                foreach ($transient_array as $transient) {
-                    delete_transient($transient);
-                }
-                $_SESSION['apss_message'] = __( 'Cache cleared Successfully', APSS_TEXT_DOMAIN );
-                wp_redirect( admin_url() . 'admin.php?page=apss-share' );
-            }
-        }
-
-        //function for adding shortcode of a plugin
-        function apss_shortcode($attr) {
-            ob_start();
-            include('inc/frontend/shortcode.php');
-            $html = ob_get_contents();
-            ob_get_clean();
-            return $html;
-        }
-
  	}//APSS_Class termination
 
     $apss_object = new APSS_Class();
-
 }

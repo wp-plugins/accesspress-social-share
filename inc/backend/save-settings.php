@@ -19,6 +19,7 @@
 	  }
 
  	$apss_share_settings['social_networks']=$social_network_array;
+ 	$apss_share_settings['share_text'] = $_POST['apss_share_settings']['share_text'];
   	$apss_share_settings['twitter_username'] = stripslashes_deep($_POST['apss_share_settings']['twitter_username']);
  	$apss_share_settings['counter_enable_options'] = $_POST['apss_share_settings']['counter_enable_options'];
   	$apss_share_settings['cache_period']= is_numeric($_POST['apss_share_settings']['cache_settings']) ? $_POST['apss_share_settings']['cache_settings'] : '24' ;

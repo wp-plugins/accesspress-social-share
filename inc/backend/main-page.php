@@ -118,6 +118,14 @@ if(isset($_SESSION['apss_message'])){ ?>
 	<div class="apss-tab-contents apss-miscellaneous" id="tab-apss-miscellaneous" style='display:none'>
 		<h2><?php _e( 'Miscellaneous settings: ', APSS_TEXT_DOMAIN ); ?> </h2>
 			<h4><?php _e('Please setup these additional settings:', APSS_TEXT_DOMAIN ); ?></h4>
+		
+		<div class="apss-share-text-settings">
+			<?php _e( 'Share text:', APSS_TEXT_DOMAIN ); ?> <input type="text" name="apss_share_settings[share_text]"  value="<?php if(isset($options['share_text'])){echo $options['share_text']; } ?>" />
+			<div class="apss_notes_cache_settings">
+				<?php _e( 'Please enter the share text to make it appear above social share icons. Leave blank if you dont want to use share text.', APSS_TEXT_DOMAIN ); ?>
+			</div>
+		</div>
+		<br />
 		<div class="apss-twitter-settings">
 			<?php _e( 'Twitter username:', APSS_TEXT_DOMAIN ); ?> <input type="text" name="apss_share_settings[twitter_username]"  value="<?php echo $options['twitter_username']; ?>" />
 		</div>

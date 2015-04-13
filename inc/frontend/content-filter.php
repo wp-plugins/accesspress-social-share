@@ -5,6 +5,11 @@ $counter_enable_options=$options['counter_enable_options'];
 $icon_set_value=$options['social_icon_set'];
 $url =  get_permalink(); //$this->curPageURL();
 $cache_period = ($options['cache_period'] != '') ? $options['cache_period']*60*60 : 24 * 60 * 60 ;
+?>
+<?php if( isset( $options['share_text'] ) && $options['share_text'] !='' ){ ?>
+<div class='apss-share-text'><?php echo $options['share_text']; ?></div>
+<?php
+}
 foreach( $options['social_networks'] as $key=>$value ){
 	if( intval($value)=='1' ){
 		switch( $key ){
