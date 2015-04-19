@@ -39,7 +39,18 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
+/*
+//share icons to align center
+.apss-social-share {
+text-align: center;
+}
 
+.apss-single-icon {
+  display: inline-block;
+}
+
+///////////////////////////////
+*/
 
 
 /***********************************theme1 css********************************************************/

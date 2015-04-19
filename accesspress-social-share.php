@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 1.1.2
+Version: 1.1.3
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -25,13 +25,12 @@ if( !defined( 'APSS_CSS_DIR' ) ) {
 	define( 'APSS_CSS_DIR', plugin_dir_url( __FILE__ ) . 'css' );
 }
 
-
 if( !defined( 'APSS_LANG_DIR' ) ) {
 	define( 'APSS_LANG_DIR', basename(dirname(__FILE__)) . '/languages/' );
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '1.1.2' );
+	define( 'APSS_VERSION', '1.1.3' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -182,9 +181,9 @@ if( !class_exists( 'APSS_Class' ) ){
          * */
         function register_frontend_assets() {
             wp_enqueue_style( 'apss-font-awesome', APSS_CSS_DIR.'/font-awesome.min.css',array(),APSS_VERSION );
-            wp_enqueue_style( 'apss-font-opensans', 'http://fonts.googleapis.com/css?family=Open+Sans',array(),false);
+            wp_enqueue_style( 'apss-font-opensans', '//fonts.googleapis.com/css?family=Open+Sans',array(),false );
             wp_enqueue_style( 'apss-frontend-css', APSS_CSS_DIR . '/frontend.css', array( 'apss-font-awesome' ), APSS_VERSION );
-            wp_enqueue_script('apss-frontend-mainjs', APSS_JS_DIR . '/frontend.js', array('jquery'), APSS_VERSION, true);
+            wp_enqueue_script( 'apss-frontend-mainjs', APSS_JS_DIR . '/frontend.js', array('jquery'), APSS_VERSION, true );
             $ajax_nonce = wp_create_nonce( 'apss-ajax-nonce' );
             wp_localize_script( 'apss-frontend-mainjs', 'frontend_ajax_object', array( 'ajax_url' => admin_url() . 'admin-ajax.php', 'ajax_nonce' => $ajax_nonce ) );
         }
