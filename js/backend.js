@@ -5,20 +5,18 @@ jQuery('.'+args).html('');
 (function ($) {
     $(function () {
         //all backend js goes here
-
         //sortable initialization
         $('.apps-opt-wrap').sortable({
             containment: "parent",
-            update:function(event,ui){ 
+            update:function(event,ui){
                         var profile_array = [];
                         $('.apss-option-wrapper input[type="checkbox"]').each(function(){
                         profile_array.push($(this).attr('data-key')) ;
                         });
                         var social_networks_orders = profile_array.join(',');
                         $('#apss_social_newtwork_order').val(social_networks_orders);
-             	      }
+                    }
         });
-
 
         $( '.apss-tabs-trigger' ).click(function(){
         $( '.apss-tabs-trigger' ).removeClass( 'apss-active-tab' );
@@ -36,7 +34,7 @@ jQuery('.'+args).html('');
         $('.apss_cache_period').focus();
         return false;
        }
-       }); 
+       });
     });//document.ready close
 
 }(jQuery));

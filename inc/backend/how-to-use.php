@@ -1,4 +1,4 @@
-
+<?php defined('ABSPATH') or die("No script kiddies please!"); ?>
 <p>Basically there are four main settings tabs that will help you to setup the plugin to work properly.</p>
 <dl>
   <dt><strong>Social Networks</strong></dt>

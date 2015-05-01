@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die("No script kiddies please!"); ?>
 <?php
 $apss_link_open_option=($options['dialog_box_options']=='1') ? "_blank": "";
 $twitter_user=$options['twitter_username'];
