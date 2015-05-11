@@ -87,6 +87,8 @@ if(isset($_SESSION['apss_message'])){ ?>
 		<p><input type="checkbox" id="apss_front_page" value="front_page" name="apss_share_settings[share_options][]" <?php if (in_array("front_page", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_front_page"><?php _e('Front Page', APSS_TEXT_DOMAIN ); ?></label></p>		
 		<p><input type="checkbox" id="apss_archives" value="archives" name="apss_share_settings[share_options][]" <?php if (in_array("archives", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_archives"><?php _e('Archives', APSS_TEXT_DOMAIN ); ?></label></p>
 		
+		<p><input type="checkbox" id="apss_attachement" value="attachment" name="apss_share_settings[share_options][]" <?php if (in_array("attachment", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_attachment"><?php _e('Attachment pages', APSS_TEXT_DOMAIN ); ?></label></p>
+		
 		<p><input type="checkbox" id="apss_categories" value="categories" name="apss_share_settings[share_options][]" <?php if (in_array("categories", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_categories"><?php _e('Categories', APSS_TEXT_DOMAIN ); ?></label></p>
 		<p><input type="checkbox" id="apss_all" value="all" name="apss_share_settings[share_options][]" <?php if (in_array("all", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_all"><?php _e('Other (search results, etc)', APSS_TEXT_DOMAIN ); ?></label></p>
 		
