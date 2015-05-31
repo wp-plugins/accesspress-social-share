@@ -2,7 +2,7 @@
 <p>Basically there are four main settings tabs that will help you to setup the plugin to work properly.</p>
 <dl>
   <dt><strong>Social Networks</strong></dt>
-  <dd><p>In this tab you can choose which social media icons you want to appear in the frontend. Here you can order the apperance of the social icons simply by drag and drop of each social icons.</p></dd>
+  <dd><p>In this tab you can choose which social media icons you want to display in the frontend. Here you can order the apperance of the social icons simply by drag and drop of each social icons.</p></dd>
     
   <dt><strong>Share options</strong></dt>
   <dd><p>In this tab you can select the options where you want to display social media share icons.</p></dd>
@@ -16,7 +16,7 @@
       <li><i class="fa fa-check"></i>You can setup the twitter username.</li>
       <li><i class="fa fa-check"></i>You can enable/disable the social counter.</li>
       <li><i class="fa fa-check"></i>Share link - You can enable the share options either in new tab/window or in same widow.</li>
-      <li><i class="fa fa-check"></i>Cache settings- Here you can set the cache settings in hour format.</li>
+      <li><i class="fa fa-check"></i>Cache settings - Here you can set the cache settings in hour format.</li>
       <li><i class="fa fa-check"></i>Email settings - If you have enabled the email settings you can setup the email header and body part.</li>
     </ul>
   </p></dd>
@@ -29,7 +29,6 @@
       <li><i class="fa fa-check"></i>Available network parameters are: facebook, twitter, google-plus, pinterest, linkedin, digg, email, print</li>
       </ul>
   </p></dd>
-  
 </dl>
 
 

@@ -4,24 +4,24 @@ Tags: social share counter, social share, social media share, social network sha
 Donate link: http://accesspressthemes.com/donation/
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Share your site urls in most popular social medias and show share counts on your website with various designs.
 
 == Description ==
-<strong>AccessPress Social Share</strong> is a <strong>Free WordPress plugin</strong> to allow anyone easily share website content (page, posts, image, media) on major social media (Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg ) by the use of the latest APIs on your website! 
+<strong>AccessPress Social Share</strong> is a <strong>Free WordPress plugin</strong> to allow anyone easily share website content (page, posts, image, media) on major social media (Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg ) by the use of the latest APIs on your website!
 
 A perfect plugin to make any content on your website social-share-friendly, and increase your social reach dramatically!
 
 You can select the social media profiles you want to activate and select one of the designs from beautifully designed 5 pre available themes.
 
-The available social media are: Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg. Also there is an option to share it by email or print the page. 
+The available social media are: Facebook, Twitter, Google+, Pinterest, LinkedIn and Digg. Also there is an option to share it by email or print the page.
 
-Just get it done in a few minutes! 
+Just get it done in a few minutes!
 
-`For more options - more social media integration, more themes, floating 
+`For more options - more social media integration, more themes, floating
 sidebar options, widget options, more shortcode options. Pinterest pin
 it button for each images. Please upgrade to Premium version.`
 
@@ -131,6 +131,10 @@ Yes. You can use the AccessPress social share by using shortcode anywhere you wa
 6. Backend Miscellaneous Settings Section
 
 == Changelog ==
+= 1.1.8 =
+* Done the bug fixing for the dispaly of the share icons for theme 3.
+* Done some text changes for how to use section and about section.
+
 = 1.1.7 =
 * Share text css fix.
 

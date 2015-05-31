@@ -14,7 +14,7 @@
 			<a href="https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/" target="_blank">https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/</a>
 		</p>
 		<div class="halfseperator"></div>
-		<p><strong>If you’d like to buy premium version of this plugin please check here:</strong><br />
+		<p><strong>If you like to buy premium version of this plugin please check here:</strong><br />
 		<a href="http://accesspressthemes.com/wordpress-plugins/accesspress-social-share-premium/" target="_blank">http://accesspressthemes.com/wordpress-plugins/accesspress-social-share-premium/ </a>
 		</p>
 		<div class="halfseperator"></div>
@@ -46,7 +46,7 @@
 			<div class="other-products">
 				<h3 class="get-header">Get in touch</h3>
 				<div class="other-products-inner">
-					<p>If you’ve any question/feedback, please get in touch: <br />
+					<p>If you've any question/feedback, please get in touch: <br />
 						<p><strong>General enquiries:</strong> <a href="mailto:info@accesspressthemes.com">info@accesspressthemes.com</a></p>
 						<p><strong>Support:</strong> <a href="mailto:support@accesspressthemes.com">support@accesspressthemes.com</a></p>
 						<p><strong>Sales:</strong> <a href="mailto:sales@accesspressthemes.com">sales@accesspressthemes.com</a></p>
@@ -62,7 +62,6 @@
 
 					<p><strong>Like us on facebook:</strong><br />
 						<iframe style="border: none; overflow: hidden; width: 764px; height: 206px;" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FAccessPress-Themes%2F1396595907277967&amp;width=842&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=true&amp;appId=1411139805828592" width="240" height="150" frameborder="0" scrolling="no"></iframe></p>
-
 						<ul class="social-icon clearfix">
 							<li><a href="https://plus.google.com/u/0/+Accesspressthemesprofile/about" target="_blank"><img src="<?php echo APSS_IMAGE_DIR;?>/google-plus-blue.png" alt="google+"></a></li>
 							<li><a href="http://www.pinterest.com/accesspresswp/" target="_blank"><img src="<?php echo APSS_IMAGE_DIR;?>/pinterest-blue.png" alt="pinterest"></a></li>

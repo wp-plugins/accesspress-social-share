@@ -99,7 +99,6 @@ foreach( $options['social_networks'] as $key=>$value ){
 			//counter available for pinterest
 			case 'pinterest':
 			?>
-
 			<div class='apss-pinterest apss-single-icon'>
 				<a title='<?php _e('Share on Pinterest', APSS_TEXT_DOMAIN ); ?>' href='javascript:pinIt();'>
 					<div class='apss-icon-block clearfix'>
@@ -107,11 +106,9 @@ foreach( $options['social_networks'] as $key=>$value ){
 					<span class='apss-social-text'><?php _e('Share on Pinterest', APSS_TEXT_DOMAIN ); ?></span>
 					<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
 					</div>
-
 						<?php if(isset($counter_enable_options) && $counter_enable_options=='1'){ ?>
 						<div class='count apss-count' data-url='<?php echo $url;?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key;?>">Loading...</div>
 						<?php } ?>
-
 				</a>
 			</div>
 			<?php
