@@ -52,6 +52,7 @@ text-align: center;
 ///////////////////////////////
 */
 
+
 /***********************************theme1 css********************************************************/
 
 .apss-theme-1 .apss-social-share {
@@ -1004,6 +1005,8 @@ text-align: center;
 
 
 /************************************************responsive*************************************************************/
+
+
 @media screen and (max-width:768px){
 
 .apss-theme-3 .apss-single-icon {
@@ -1019,6 +1022,8 @@ text-align: center;
     width: 100%;
     clear: both;
 }
+
 }
+
 
 

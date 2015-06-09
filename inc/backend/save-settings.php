@@ -3,8 +3,11 @@
  $apss_share_settings=array();
  if( $_POST['action']=='apss_save_options' ){
  	$share_options = array();
- 	foreach ( $_POST['apss_share_settings']['share_options'] as $key=>$value ){
- 		$share_options[]=$value;
+ 	if(isset($_POST['apss_share_settings'])){
+ 		
+	 	foreach ( $_POST['apss_share_settings']['share_options'] as $key=>$value ){
+	 		$share_options[]=$value;
+	 	}
  	}
 
 	$apss_share_settings['share_options']=$share_options;
