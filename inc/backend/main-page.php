@@ -27,7 +27,7 @@
 		<?php _e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>
 	</div>
 </div>
-<?php $options = get_option( APSS_SETTING_NAME ); 
+<?php $options = get_option( APSS_SETTING_NAME );
 if(isset($_SESSION['apss_message'])){ ?>
 
 <div class="apss-message">

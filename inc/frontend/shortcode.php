@@ -24,7 +24,7 @@ if( isset($attr['networks']) ){
 <div class='apss-social-share apss-theme-<?php echo $icon_set_value; ?> clearfix'>
 <?php
 
-$title=get_the_title();
+$title=str_replace('+', '%20', urlencode($post->post_title));
 $content=strip_shortcodes(strip_tags(get_the_content()));
 if(strlen($content) >= 100){
 $excerpt= substr($content, 0, 100).'...';
@@ -154,7 +154,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 			case 'email':
 					if ( strpos( $options['apss_email_body'], '%%' ) || strpos( $options['apss_email_subject'], '%%' ) ) {
 						$link = 'mailto:?subject='.$options['apss_email_subject'].'&amp;body='.$options['apss_email_body'];
-						$link = preg_replace( array( '#%%title%%#', '#%%siteurl%%#', '#%%permalink%%#', '#%%url%%#' ), array( get_the_title(), get_site_url(), get_permalink(), $url ), $link );
+						$link = preg_replace( array( '#%%title%%#', '#%%siteurl%%#', '#%%permalink%%#', '#%%url%%#' ), array( $title, get_site_url(), get_permalink(), $url ), $link );
 					}
 					else {
 						$link = 'mailto:?subject='.$options['apss_email_subject'].'&amp;body='.$options['apss_email_body'].": ".$url;
