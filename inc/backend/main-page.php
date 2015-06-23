@@ -150,7 +150,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 			<input type='text' id="apss_cache_period" name='apss_share_settings[cache_settings]' value="<?php if(isset($options['cache_period'])){ echo $options['cache_period']; } ?>" onkeyup="removeMe('invalid_cache_period');"/>
 			<span class="error invalid_cache_period"></span>
 			<div class="apss_notes_cache_settings">
-				<?php _e( 'Please enter the time in hours in which the social share should be updated. Default is 24 hours', APSS_TEXT_DOMAIN ); ?>
+				<?php _e( 'Please enter the time in hours in which the social share counter should be updated. Default is 24 hours.', APSS_TEXT_DOMAIN ); ?>
 			</div>
 		</div>
 

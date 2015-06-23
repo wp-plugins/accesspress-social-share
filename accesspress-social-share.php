@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 2.0.0
+Version: 2.0.1
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -30,7 +30,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '2.0.0' );
+	define( 'APSS_VERSION', '2.0.1' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -132,7 +132,7 @@ if( !class_exists( 'APSS_Class' ) ){
                  $is_lists_authorized = (is_search()) && $all ? true : false;
 
                  $is_attachement_check = in_array('attachment', $options['share_options']);
-                 $is_attachement = (is_attachment() && $is_attachement_check ) ? true : false; 
+                 $is_attachement = (is_attachment() && $is_attachement_check ) ? true : false;
 
                  $front_page = in_array('front_page', $options['share_options']);
                  $is_front_page=(is_front_page()) && $front_page ? true : false;
@@ -229,7 +229,7 @@ if( !class_exists( 'APSS_Class' ) ){
                     delete_transient($transient);
                 }
                 update_option( APSS_COUNT_TRANSIENTS, array() );
-                $transient_array = array('apss_tweets_count', 'apss_linkedin_count', 'apss_fb_count', 'apss_pin_count', 'apss_google_plus_count', 'apss_stumble_count', 'apss_delicious_count', 'apss_reddit_count');
+                $transient_array = array('apss_tweets_count', 'apss_linkedin_count', 'apss_fb_count', 'apss_pin_count', 'apss_google_plus_count');
                 foreach ($transient_array as $transient) {
                     delete_transient($transient);
                 }
@@ -304,17 +304,16 @@ if( !class_exists( 'APSS_Class' ) ){
         //for facebook url share count
         function get_fb($url) {
             $apss_settings = $this->apss_settings;
-            $cache_period = $apss_settings['cache_period']*60*60;
+            $cache_period = $apss_settings['cache_period'];
             $fb_transient = 'fb_' . md5($url);
             $fb_transient_count = get_transient($fb_transient);
-
             //for setting the counter transient in separate options value
             $apss_social_counts_transients = get_option( APSS_COUNT_TRANSIENTS );
             if (false === $fb_transient_count) {
                 $json_string = $this->get_json_values( 'https://graph.facebook.com/?id=' . $url );
                 $json = json_decode( $json_string, true );
                 $facebook_count = isset($json['shares']) ? intval( $json['shares'] ) : 0;
-                set_transient($fb_transient, $facebook_count, $cache_period);
+                set_transient($fb_transient, $facebook_count, $cache_period * HOUR_IN_SECONDS );
                 if( !in_array( $fb_transient, $apss_social_counts_transients) ){
                     $apss_social_counts_transients[] = $fb_transient;
                     update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients);
@@ -328,7 +327,7 @@ if( !class_exists( 'APSS_Class' ) ){
         //for twitter url share count
         function get_tweets($url) {
             $apss_settings = $this->apss_settings;
-            $cache_period = $apss_settings['cache_period']*60*60;
+            $cache_period = $apss_settings['cache_period'];
             $twitter_transient = 'twitter_' . md5($url);
             $twitter_transient_count = get_transient($twitter_transient);
 
@@ -338,7 +337,7 @@ if( !class_exists( 'APSS_Class' ) ){
                 $json_string = $this->get_json_values('http://urls.api.twitter.com/1/urls/count.json?url=' . $url);
                 $json = json_decode($json_string, true);
                 $tweet_count = isset($json['count']) ? intval($json['count']) : 0;
-                set_transient($twitter_transient, $tweet_count, $cache_period);
+                set_transient($twitter_transient, $tweet_count, $cache_period * HOUR_IN_SECONDS);
                 if(!in_array($twitter_transient, $apss_social_counts_transients)){
                 	$apss_social_counts_transients[] = $twitter_transient;
                 	update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
@@ -352,7 +351,7 @@ if( !class_exists( 'APSS_Class' ) ){
         //for google plus url share count
         function get_plusones($url) {
             $apss_settings = $this->apss_settings;
-            $cache_period = $apss_settings['cache_period']*60*60;
+            $cache_period = $apss_settings['cache_period'];
             $googlePlus_transient = 'gp_' . md5($url);
             $googlePlus_transient_count = get_transient($googlePlus_transient);
 
@@ -370,7 +369,7 @@ if( !class_exists( 'APSS_Class' ) ){
                 curl_close($curl);
                 $json = json_decode($curl_results, true);
                 $plusones_count = isset($json[0]['result']['metadata']['globalCounts']['count']) ? intval($json[0]['result']['metadata']['globalCounts']['count']) : 0;
-                set_transient($googlePlus_transient, $plusones_count, $cache_period);
+                set_transient($googlePlus_transient, $plusones_count, $cache_period * HOUR_IN_SECONDS);
                 if(!in_array($googlePlus_transient, $apss_social_counts_transients)){
                 	$apss_social_counts_transients[] = $googlePlus_transient;
                 	update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
@@ -384,7 +383,7 @@ if( !class_exists( 'APSS_Class' ) ){
         //for pinterest url share count
         function get_pinterest($url) {
             $apss_settings = $this->apss_settings;
-            $cache_period = $apss_settings['cache_period']*60*60;
+            $cache_period = $apss_settings['cache_period'];
             $pinterest_transient = 'pinterest_' . md5($url);
             $pinterest_transient_count = get_transient($pinterest_transient);
            
@@ -395,7 +394,7 @@ if( !class_exists( 'APSS_Class' ) ){
                 $json_string = preg_replace('/^receiveCount\((.*)\)$/', "\\1", $json_string);
                 $json = json_decode($json_string, true);
                 $pinterest_count = isset($json['count']) ? intval($json['count']) : 0;
-                set_transient($pinterest_transient, $pinterest_count, $cache_period);
+                set_transient($pinterest_transient, $pinterest_count, $cache_period * HOUR_IN_SECONDS);
                 if(!in_array($pinterest_transient, $apss_social_counts_transients)){
                 	$apss_social_counts_transients[] = $pinterest_transient;
                 	update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
@@ -410,7 +409,7 @@ if( !class_exists( 'APSS_Class' ) ){
         //for linkedin url share count
         function get_linkedin($url) {
             $apss_settings = $this->apss_settings;
-            $cache_period = $apss_settings['cache_period']*60*60;
+            $cache_period = $apss_settings['cache_period'];
             $linkedin_transient = 'linkedin_' . md5($url);
             $linkedin_transient_count = get_transient($linkedin_transient);
 
@@ -420,7 +419,7 @@ if( !class_exists( 'APSS_Class' ) ){
                 $json_string = $this->get_json_values("https://www.linkedin.com/countserv/count/share?url=$url&format=json");
                 $json = json_decode($json_string, true);
                 $linkedin_count = isset($json['count']) ? intval($json['count']) : 0;
-                set_transient($linkedin_transient, $linkedin_count, $cache_period);
+                set_transient($linkedin_transient, $linkedin_count, $cache_period * HOUR_IN_SECONDS);
                 if(!in_array($linkedin_transient, $apss_social_counts_transients)){
                 	$apss_social_counts_transients[] = $linkedin_transient;
                 	update_option( APSS_COUNT_TRANSIENTS, $apss_social_counts_transients );
@@ -433,8 +432,8 @@ if( !class_exists( 'APSS_Class' ) ){
 
         //function to return json values from social media urls
         private function get_json_values( $url ){
-         	$apss_settings = $this->apss_settings;
-            $cache_period = $apss_settings['cache_period']*60*60;
+         	//$apss_settings = $this->apss_settings;
+            //$cache_period = $apss_settings['cache_period'];
             $args = array( 'timeout' => 10 );
             $response = wp_remote_get( $url, $args );
             $json_response = wp_remote_retrieve_body( $response );
