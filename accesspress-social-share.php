@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 2.0.1
+Version: 2.0.2
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -30,7 +30,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '2.0.1' );
+	define( 'APSS_VERSION', '2.0.2' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -307,6 +307,7 @@ if( !class_exists( 'APSS_Class' ) ){
             $cache_period = $apss_settings['cache_period'];
             $fb_transient = 'fb_' . md5($url);
             $fb_transient_count = get_transient($fb_transient);
+            
             //for setting the counter transient in separate options value
             $apss_social_counts_transients = get_option( APSS_COUNT_TRANSIENTS );
             if (false === $fb_transient_count) {
@@ -432,9 +433,7 @@ if( !class_exists( 'APSS_Class' ) ){
 
         //function to return json values from social media urls
         private function get_json_values( $url ){
-         	//$apss_settings = $this->apss_settings;
-            //$cache_period = $apss_settings['cache_period'];
-            $args = array( 'timeout' => 10 );
+         	$args = array( 'timeout' => 10 );
             $response = wp_remote_get( $url, $args );
             $json_response = wp_remote_retrieve_body( $response );
             return $json_response;
