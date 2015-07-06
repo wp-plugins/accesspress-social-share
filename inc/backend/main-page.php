@@ -29,18 +29,17 @@
 </div>
 <?php $options = get_option( APSS_SETTING_NAME );
 if(isset($_SESSION['apss_message'])){ ?>
-
-<div class="apss-message">
-<p><?php 
-	echo $_SESSION['apss_message'];
-	unset($_SESSION['apss_message']); 
-	?></p>
-</div>
+	<div class="apss-message">
+	<p><?php 
+		echo $_SESSION['apss_message'];
+		unset($_SESSION['apss_message']); 
+		?></p>
+	</div>
 <?php } ?>
 
 <div class="apps-wrap">
 <form method="post" action="<?php echo admin_url() . 'admin-post.php' ?>">
-	 <input type="hidden" name="action" value="apss_save_options"/>
+	<input type="hidden" name="action" value="apss_save_options"/>
 
 <ul class="apss-setting-tabs clearfix">
     <li><a href="javascript:void(0)" id="apss-social-networks" class="apss-tabs-trigger apss-active-tab	"><?php _e( 'Social Networks', APSS_TEXT_DOMAIN );?></a></li>
@@ -49,7 +48,7 @@ if(isset($_SESSION['apss_message'])){ ?>
     <li><a href="javascript:void(0)" id="apss-miscellaneous" class="apss-tabs-trigger"><?php _e( 'Miscellaneous', APSS_TEXT_DOMAIN );?></a></li>
     <li><a href="javascript:void(0)" id="apss-how-to-use" class="apss-tabs-trigger"><?php _e( 'How To Use', APSS_TEXT_DOMAIN );?></a></li>
     <li><a href="javascript:void(0)" id="apss-about" class="apss-tabs-trigger"><?php _e( 'About', APSS_TEXT_DOMAIN );?></a></li>
-</ul>	
+</ul>
 <div class="apss-wrapper">
 	<div class="apss-tab-contents apss-social-networks" id="tab-apss-social-networks" style='display:block'>
 		<h2><?php _e('Social Media chooser:', APSS_TEXT_DOMAIN); ?> </h2>
@@ -95,8 +94,6 @@ if(isset($_SESSION['apss_message'])){ ?>
 	</div>
 
 	<div class="apss-tab-contents apss-display-settings" id="tab-apss-display-settings" style='display:none'>
-
-
 		<div class=' apss-display-positions'>
 			<h2><?php _e('Display positions:', APSS_TEXT_DOMAIN); ?></h2>
 			<span class='social-text'><?php _e( 'Please choose the option where you want to display the social share:', APSS_TEXT_DOMAIN ); ?></span>
@@ -104,7 +101,6 @@ if(isset($_SESSION['apss_message'])){ ?>
 			<p><input type="radio" id="apss_above_content" name="apss_share_settings[social_share_position_options]"/ value="above_content" <?php if($options['share_positions']=='above_content'){ echo "checked='checked'"; } ?> /><label for='apss_above_content'><?php _e( 'Above content', APSS_TEXT_DOMAIN ); ?></label></p>
 			<p><input type="radio" id="apss_below_above_content" id="below_above_content" name="apss_share_settings[social_share_position_options]" value="on_both" <?php if($options['share_positions']=='on_both'){ echo "checked='checked'"; } ?> /><label for='apss_below_above_content'><?php _e( 'Both(Below content and Above content)', APSS_TEXT_DOMAIN ); ?></label></p>
 		</div>
-
 		<div class=" apss-icon-sets">
 			<h2><?php _e( 'Social icons sets: ', APSS_TEXT_DOMAIN ); ?> </h2>
 			<?php _e('Please choose any one out of available icon themes:', APSS_TEXT_DOMAIN ); ?>
@@ -114,7 +110,6 @@ if(isset($_SESSION['apss_message'])){ ?>
 			<p><input id="apss_icon_set_4" value="4" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='4'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_4"><span class="apss_demo_icon apss_demo_icons_4"></span><?php _e('Theme 4', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme4.jpg';?>"/></div></label></p>
 			<p><input id="apss_icon_set_5" value="5" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='5'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_5"><span class="apss_demo_icon apss_demo_icons_5"></span><?php _e('Theme 5', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme5.jpg';?>"/></div></label></p>
 		</div>
-
 	</div>
 	
 	<div class="apss-tab-contents apss-miscellaneous" id="tab-apss-miscellaneous" style='display:none'>
@@ -124,7 +119,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 		<div class="apss-share-text-settings">
 			<?php _e( 'Share text:', APSS_TEXT_DOMAIN ); ?> <input type="text" name="apss_share_settings[share_text]"  value="<?php if(isset($options['share_text'])){echo $options['share_text']; } ?>" />
 			<div class="apss_notes_cache_settings">
-				<?php _e( 'Please enter the share text to make it appear above social share icons. Leave blank if you dont want to use share text.', APSS_TEXT_DOMAIN ); ?>
+				<?php _e( 'Please enter the share text to make it appear above social share icons. Leave blank if you don\'t want to use share text.', APSS_TEXT_DOMAIN ); ?>
 			</div>
 		</div>
 		<br />
@@ -150,7 +145,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 			<input type='text' id="apss_cache_period" name='apss_share_settings[cache_settings]' value="<?php if(isset($options['cache_period'])){ echo $options['cache_period']; } ?>" onkeyup="removeMe('invalid_cache_period');"/>
 			<span class="error invalid_cache_period"></span>
 			<div class="apss_notes_cache_settings">
-				<?php _e( 'Please enter the time in hours in which the social share counter should be updated. Default is 24 hours.', APSS_TEXT_DOMAIN ); ?>
+				<?php _e( 'Please enter the time in hours in which the social share counter should be updated from social networks. Default is 24 hours.', APSS_TEXT_DOMAIN ); ?>
 			</div>
 		</div>
 
@@ -161,7 +156,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 				<input type='text' name="apss_share_settings[apss_email_subject]" value="<?php echo $options['apss_email_subject'] ?>" />
 			</div>
 			<div class="app-email-body email-setg">
-				<label for='apss-email-body'><?php _e( 'Email body:', APSS_TEXT_DOMAIN ); ?></label> 
+				<label for='apss-email-body'><?php _e( 'Email body:', APSS_TEXT_DOMAIN ); ?></label>
 				<textarea rows='30' cols='30' name="apss_share_settings[apss_email_body]"><?php echo $options['apss_email_body'] ?></textarea>
 			</div>
 		</div>
@@ -186,7 +181,6 @@ if(isset($_SESSION['apss_message'])){ ?>
 	 <?php $nonce_clear = wp_create_nonce( 'apss-clear-cache-nonce' ); ?>
          <a href="<?php echo admin_url().'admin-post.php?action=apss_restore_default_settings&_wpnonce='.$nonce;?>" onclick="return confirm('<?php _e( 'Are you sure you want to restore default settings?',APSS_TEXT_DOMAIN ); ?>')"><input type="button" value="Restore Default Settings" class="apss-reset-button button primary-button"/></a>
          <a href="<?php echo admin_url().'admin-post.php?action=apss_clear_cache&_wpnonce='.$nonce_clear;?>" onclick="return confirm('<?php _e( 'Are you sure you want to clear cache share counter?',APSS_TEXT_DOMAIN ); ?>')"><input type="button" value="Clear Cache" class="apss-reset-button button primary-button"/></a>
-       
 </div>
 </form>
 </div>

@@ -183,7 +183,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 					</div>
 				</a>
 			</div>
-			<?php 
+			<?php
 			break;
 			}
 	}
