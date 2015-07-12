@@ -6,9 +6,8 @@ $apss_link_open_option=($options['dialog_box_options']=='1') ? "_blank": "";
 $twitter_user=$options['twitter_username'];
 $counter_enable_options=$options['counter_enable_options'];
 $icon_set_value=$options['social_icon_set'];
-$url= get_permalink(); //$this->curPageURL();
+$url= get_permalink();
 $cache_period = ($options['cache_period'] != '') ? $options['cache_period']*60*60 : 24 * 60 * 60 ;
-
 if( isset($attr['networks']) ){
 		$raw_array = explode( ',', $attr['networks'] );
 		$network_array=array_map('trim', $raw_array );
@@ -20,10 +19,8 @@ if( isset($attr['networks']) ){
 		$options['social_networks'] = $new_array;
 	}
 ?>
-
 <div class='apss-social-share apss-theme-<?php echo $icon_set_value; ?> clearfix'>
 <?php
-
 $title=str_replace('+', '%20', urlencode($post->post_title));
 $content=strip_shortcodes(strip_tags(get_the_content()));
 if(strlen($content) >= 100){
@@ -31,7 +28,6 @@ $excerpt= substr($content, 0, 100).'...';
 }else{
 	$excerpt = $content;
 }
-
 foreach( $options['social_networks'] as $key=>$value ){
 	if( intval($value)=='1' ){
 		switch($key){
@@ -51,7 +47,7 @@ foreach( $options['social_networks'] as $key=>$value ){
                     <?php } ?>
 					</a>
 			</div>
-			<?php 
+			<?php
 			break;
 
 			//counter available for twitter
@@ -187,8 +183,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 			break;
 			}
 	}
-
-}	
+}
 
 ?>
 </div>

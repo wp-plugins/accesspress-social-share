@@ -5,7 +5,7 @@
 	<img src="<?php echo APSS_IMAGE_DIR; ?>/logo-old.png" alt="<?php esc_attr_e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>" />
 	</div>
 	<div class="apss-header-icons">
-                    <p>Follow us for new updates</p>
+                    <p><?php _e('Follow us for new updates'); ?></p>
                     <div class="apss-social-bttns">
                         <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FAccessPress-Themes%2F1396595907277967&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=35&amp;appId=1411139805828592" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px; width:50px " allowtransparency="true"></iframe>
                         &nbsp;&nbsp;
@@ -19,9 +19,7 @@
                                 fjs.parentNode.insertBefore(js, fjs);
                             }
                         }(document, "script", "twitter-wjs");</script>
-
                     </div>
-                
 	</div>
 	<div class="apss-header-title">
 		<?php _e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>
@@ -79,7 +77,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 
 	<div class="apss-tab-contents apss-share-options" id="tab-apss-share-options" style='display:none'>
 		<h2><?php _e('Share options:', APSS_TEXT_DOMAIN); ?> </h2>
-		<span class="social-text"><?php _e( 'Please choose the options where you want to display social share:', APSS_TEXT_DOMAIN ); ?></span>
+		<span class="social-text"><?php _e( 'Please choose the options where you want to display social share icons:', APSS_TEXT_DOMAIN ); ?></span>
 		<p><input type="checkbox" id="apss_posts" value="post" name="apss_share_settings[share_options][]" <?php if (in_array("post", $options['share_options']) || in_array("posts", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_posts"><?php _e( 'Posts', APSS_TEXT_DOMAIN ); ?> </label></p>
 		<p><input type="checkbox" id="apss_pages" value="page" name="apss_share_settings[share_options][]" <?php if (in_array("page", $options['share_options']) || in_array("pages", $options['share_options'])) { echo "checked='checked'"; } ?> ><label for="apss_pages"><?php _e( 'Pages', APSS_TEXT_DOMAIN ); ?> </label></p>
 		
@@ -95,7 +93,7 @@ if(isset($_SESSION['apss_message'])){ ?>
 
 	<div class="apss-tab-contents apss-display-settings" id="tab-apss-display-settings" style='display:none'>
 		<div class=' apss-display-positions'>
-			<h2><?php _e('Display positions:', APSS_TEXT_DOMAIN); ?></h2>
+			<h2><?php _e('Display position:', APSS_TEXT_DOMAIN); ?></h2>
 			<span class='social-text'><?php _e( 'Please choose the option where you want to display the social share:', APSS_TEXT_DOMAIN ); ?></span>
 			<p><input type="radio" id="apss_below_content" name="apss_share_settings[social_share_position_options]" value="below_content" <?php if($options['share_positions']=='below_content'){ echo "checked='checked'"; } ?> /><label for='apss_below_content'><?php _e( 'Below content', APSS_TEXT_DOMAIN ); ?></label></p>
 			<p><input type="radio" id="apss_above_content" name="apss_share_settings[social_share_position_options]"/ value="above_content" <?php if($options['share_positions']=='above_content'){ echo "checked='checked'"; } ?> /><label for='apss_above_content'><?php _e( 'Above content', APSS_TEXT_DOMAIN ); ?></label></p>
