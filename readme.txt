@@ -4,7 +4,7 @@ Tags: social share counter, social share, social media share, social network sha
 Donate link: http://accesspressthemes.com/donation/
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,6 +131,10 @@ Yes. You can use the AccessPress social share by using shortcode anywhere you wa
 6. Backend Miscellaneous Settings Section
 
 == Changelog ==
+= 2.0.5 =
+* Removal of unnecessary code(condition checking) in saving settings.
+* Functions - frontend_counter, get_plusones code modification for security enhancement.
+
 = 2.0.4 =
 * Text changes done for the display settings tab.
 * Done the code optimization of plugin's shortcode.

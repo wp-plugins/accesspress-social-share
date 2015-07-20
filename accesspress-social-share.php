@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 2.0.4
+Version: 2.0.5
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -30,7 +30,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '2.0.4' );
+	define( 'APSS_VERSION', '2.0.5' );
 }
 
 if(!defined('APSS_TEXT_DOMAIN')){
@@ -257,14 +257,15 @@ if( !class_exists( 'APSS_Class' ) ){
                     foreach ($details as $detail) {
                         $new_detail_array[$detail['network']] = $this->get_count($detail['network'], $detail['url']);
                     }
-                } else {
-                    $shortcode_data = $_POST['shortcode_data'];
-                    foreach ($shortcode_data as $detail) {
-                        $detail_array = explode('_', $detail);
-                        $url = trim($detail_array[0]);
-                        $network = $detail_array[1];
-                        $new_detail_array[] = $this->get_count($network, $url);
-                    }
+                } else if(isset($_POST['shortcode_data'])){
+                        $shortcode_data = $_POST['shortcode_data'];
+                        foreach ($shortcode_data as $detail) {
+                            $detail_array = explode('_', $detail);
+                            $url = trim($detail_array[0]);
+                            $network = $detail_array[1];
+                            $new_detail_array[] = $this->get_count($network, $url);
+                        }
+
                 }
                 die( json_encode( $new_detail_array ) );
             }
@@ -368,6 +369,7 @@ if( !class_exists( 'APSS_Class' ) ){
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
                 $curl_results = curl_exec($curl);
                 curl_close($curl);
+                unset($curl);
                 $json = json_decode($curl_results, true);
                 $plusones_count = isset($json[0]['result']['metadata']['globalCounts']['count']) ? intval($json[0]['result']['metadata']['globalCounts']['count']) : 0;
                 set_transient($googlePlus_transient, $plusones_count, $cache_period * HOUR_IN_SECONDS);
