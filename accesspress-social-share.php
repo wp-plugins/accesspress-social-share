@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 2.0.5
+Version: 2.0.6
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -30,19 +30,19 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '2.0.5' );
+	define( 'APSS_VERSION', '2.0.6' );
 }
 
-if(!defined('APSS_TEXT_DOMAIN')){
+if( !defined('APSS_TEXT_DOMAIN')){
 	define( 'APSS_TEXT_DOMAIN', 'apss-share' );
 }
 
-if(!defined('APSS_SETTING_NAME')){
-define( 'APSS_SETTING_NAME','apss_share_settings' );
+if( !defined('APSS_SETTING_NAME')){
+    define( 'APSS_SETTING_NAME','apss_share_settings' );
 }
 
-if(!defined('APSS_COUNT_TRANSIENTS')){
-define( 'APSS_COUNT_TRANSIENTS','apss_social_counts_transients' );
+if( !defined('APSS_COUNT_TRANSIENTS')){
+    define( 'APSS_COUNT_TRANSIENTS','apss_social_counts_transients' );
 }
 
 //Decleration of the class for necessary configuration of a plugin
@@ -116,6 +116,7 @@ if( !class_exists( 'APSS_Class' ) ){
                 $post_content=$content;
                 $title = str_replace('+', '%20', urlencode($post->post_title));
                 $content=strip_shortcodes( strip_tags( get_the_content() ) );
+                
                 if(strlen($content) >= 100){
                 $excerpt= substr($content, 0, 100).'...';
                 }else{
