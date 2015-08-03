@@ -29,6 +29,14 @@
       <li><i class="fa fa-check"></i>Available network parameters are: facebook, twitter, google-plus, pinterest, linkedin, digg, email, print</li>
       </ul>
   </p></dd>
+  <dd>
+    <p>You can use shortcode [apss-count] for the display of the social share count only in the contents. You need to enter network name you want to display.
+        <ul class="how-list">
+          <li><i class="fa fa-check"></i>Example 1: <code>[apss-count network='facebook']</code></li>
+          <li><i class="fa fa-check"></i>Available network parameters are: facebook, twitter, google-plus, pinterest, linkedin</li>
+        </ul>
+    </p>
+  </dd>
 </dl>
 
 
