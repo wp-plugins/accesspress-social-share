@@ -18,6 +18,7 @@ $apss_share_settings['social_networks']=$social_networks;
 $apss_share_settings['share_text'] = '';
 $apss_share_settings['twitter_username'] = '';
 $apss_share_settings['counter_enable_options']='0';
+$apss_share_settings['total_counter_enable_options']='0';
 $apss_share_settings['cache_period']='24';
 $apss_share_settings['apss_social_counts_transients']=array();
 $apss_share_settings['dialog_box_options'] ='1';

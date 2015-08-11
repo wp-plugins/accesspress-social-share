@@ -102,11 +102,16 @@ if(isset($_SESSION['apss_message'])){ ?>
 		<div class=" apss-icon-sets">
 			<h2><?php _e( 'Social icons sets: ', APSS_TEXT_DOMAIN ); ?> </h2>
 			<?php _e('Please choose any one out of available icon themes:', APSS_TEXT_DOMAIN ); ?>
+			<?php for($i=1; $i<=6; $i++){ ?>
+			<p><input id="apss_icon_set_<?php echo $i; ?>" value="<?php echo $i; ?>" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] == $i ){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_<?php echo $i; ?>"><span class="apss_demo_icon apss_demo_icons_<?php echo $i; ?>"></span><?php _e("Theme $i", APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src='<?php echo APSS_IMAGE_DIR."/theme/theme$i.jpg";?>'/></div></label></p>
+			<?php } ?>
+			<?php /* ?>
 			<p><input id="apss_icon_set_1" value="1" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='1'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_1"><span class="apss_demo_icon apss_demo_icons_1"></span><?php _e('Theme 1', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme1.jpg';?>"/></div></label></p>
 			<p><input id="apss_icon_set_2" value="2" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='2'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_2"><span class="apss_demo_icon apss_demo_icons_2"></span><?php _e('Theme 2', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme2.jpg';?>"/></div></label></p>
 			<p><input id="apss_icon_set_3" value="3" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='3'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_3"><span class="apss_demo_icon apss_demo_icons_3"></span><?php _e('Theme 3', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme3.jpg';?>"/></div></label></p>
 			<p><input id="apss_icon_set_4" value="4" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='4'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_4"><span class="apss_demo_icon apss_demo_icons_4"></span><?php _e('Theme 4', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme4.jpg';?>"/></div></label></p>
 			<p><input id="apss_icon_set_5" value="5" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='5'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_5"><span class="apss_demo_icon apss_demo_icons_5"></span><?php _e('Theme 5', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme5.jpg';?>"/></div></label></p>
+			<?php */ ?>
 		</div>
 	</div>
 	
@@ -129,6 +134,12 @@ if(isset($_SESSION['apss_message'])){ ?>
 			<h4><?php _e( 'Social share counter enable?', APSS_TEXT_DOMAIN ); ?> </h4>
 			<div class="misc-opt"><input type="radio" id='counter_enable_options_n' name="apss_share_settings[counter_enable_options]" value="0" <?php if($options['counter_enable_options'] =='0'){ echo "checked='checked'"; } ?> /><label for="counter_enable_options_n"><?php _e( 'No', APSS_TEXT_DOMAIN ); ?></label></div>
 			<div class="misc-opt"><input type="radio" id='counter_enable_options_y' name="apss_share_settings[counter_enable_options]" value="1" <?php if($options['counter_enable_options'] =='1'){ echo "checked='checked'"; } ?> /><label for="counter_enable_options_y"><?php _e( 'Yes', APSS_TEXT_DOMAIN ); ?></label></div>
+		</div>
+
+		<div class="apss-total-counter-settings clearfix">
+			<h4><?php _e( 'Social share total counter enable?', APSS_TEXT_DOMAIN ); ?> </h4>
+			<div class="misc-opt"><input type="radio" id='total_counter_enable_options_n' name="apss_share_settings[total_counter_enable_options]" value="0" <?php if(isset($options['total_counter_enable_options']) &&  $options['total_counter_enable_options'] == '0'){ echo "checked='checked'"; } ?> /><label for="total_counter_enable_options_n"><?php _e( 'No', APSS_TEXT_DOMAIN ); ?></label></div>
+			<div class="misc-opt"><input type="radio" id='total_counter_enable_options_y' name="apss_share_settings[total_counter_enable_options]" value="1" <?php if(isset($options['total_counter_enable_options']) &&  $options['total_counter_enable_options'] == '1'){ echo "checked='checked'"; } ?> /><label for="total_counter_enable_options_y"><?php _e( 'Yes', APSS_TEXT_DOMAIN ); ?></label></div>
 		</div>
 
 		<div class="apss-dialog-boxs clearfix">

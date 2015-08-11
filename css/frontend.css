@@ -26,7 +26,7 @@ a:hover, a:focus {
 .entry-content .apss-social-share a {
     text-decoration: none;
 }
-
+.apss-theme-6 .apss-single-icon a::before
 .entry-content .apss-social-share a:hover {
    color:#fff;
 }
@@ -52,6 +52,27 @@ text-align: center;
 ///////////////////////////////
 */
 
+  .apss-total-share-count{
+ 
+        display: inline-block;
+    vertical-align: top;
+    margin-top: 4px;
+}
+
+  .apss-count-number{    
+    font-size: 28px;
+    display: inline-block;
+    vertical-align: top;}
+
+  .apss-total-shares{    display: inline-block;
+    font-size: 13px;
+    vertical-align: middle;
+    margin-top: 11px;}
+
+   .apss-total-text{
+    display: block;
+    line-height: 9px;
+}
 
 /***********************************theme1 css********************************************************/
 
@@ -1002,6 +1023,176 @@ text-align: center;
   font-family: 'Open Sans', sans-serif;
   margin-left: 9px;
 }
+
+
+
+/**********************************************THEME 6 CSS ************************************************************/
+
+.apss-theme-6 .apss-social-text{
+    display:none;
+}
+
+.apss-theme-6 .apss-share{
+    display: none;
+}
+
+.apss-theme-6 .apss-single-icon {
+    border-bottom: none;
+        margin-bottom: 20px;
+    display: inline-block;
+ }
+.apss-theme-6 .apss-single-icon a{
+   
+    color: #fff;
+    display: block;
+    float: left;
+    height: 30px;
+    margin: 5px;
+    padding: 5px;
+    position: relative;
+    width: 30px;
+    background: none !important;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+ }
+
+    .apss-theme-6 .apss-single-icon a:before{
+         content: '';
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #E6E6E6;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -17px;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+
+    }
+ 
+
+.apss-theme-6 .apss-single-icon .apss-icon-block{
+       vertical-align: middle;
+    line-height: 46px;
+    display: inline-block;
+}
+ 
+
+.apss-theme-6 .apss-icon-block{
+   
+    position: relative;
+}
+
+.apss-theme-6 .apss-single-icon .fa{
+        color: #8A8A8A;
+    font-size: 17px;
+    line-height: 1;
+    position: relative;
+    display: block;
+}
+
+
+
+.apss-theme-6 .apss-share{
+    
+    font-size: 13px;
+    text-align: center;
+    line-height: 1;
+    padding: 3px 0 2px;
+    text-transform: capitalize;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.apss-theme-6 .count{
+    display: block;
+    font-size: 13px;
+    text-align: center;
+ 
+    padding: 2px;
+ 
+    color: #000;
+    margin-top: 5px
+ 
+}
+
+
+.apss-theme-6 .apss-icon-block a:hover .fa, .apss-theme-6 .apss-single-icon:hover .fa{
+    color:#fff;
+}
+
+.apss-theme-6 .apss-facebook a:hover:before {
+    background-color:#3b5998;
+}
+
+
+.apss-theme-6 .apss-twitter a:hover:before {
+    background-color:#1dcaff;
+}
+ 
+
+.apss-theme-6 .apss-google-plus a:hover:before {
+    background-color:#dd4b39;
+}
+
+ 
+.apss-theme-6 .apss-pinterest a:hover:before {
+    background-color:#C92228;
+}
+
+ 
+
+.apss-theme-6 .apss-linkedin a:hover:before {
+    background-color:#3f729b;
+}
+ 
+.apss-theme-6 .apss-digg a:hover:before {
+    background-color:#2169a8;
+    
+} 
+.apss-theme-6 .apss-print a:hover:before {
+    background-color:#5e5959;
+}
+
+ 
+.apss-theme-6 .apss-email a:hover:before {
+    background-color:#8f8f8f;
+} 
+
+.apss-theme-6 .apss-single-icon a:hover{
+    background-color:#fff;
+}
+
+.apss-theme-6 .apss-single-icon .apss-icon-block{
+    background:none;
+}
+
+.apss-theme-6 .apss-single-icon.apss-print .count{
+    display:none;
+}
+
+.apss-theme-6 .apss-single-icon.apss-email .count{
+    display:none;
+}
+
+.apss-share-text{
+  opacity: 0.4;
+  line-height: 16px;
+  color: #333;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 9px;
+}
+
+
 
 
 /************************************************responsive*************************************************************/

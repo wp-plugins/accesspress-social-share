@@ -6,13 +6,29 @@ $counter_enable_options=$options['counter_enable_options'];
 $icon_set_value=$options['social_icon_set'];
 $url =  get_permalink(); //$this->curPageURL();
 $cache_period = ($options['cache_period'] != '') ? $options['cache_period']*60*60 : 24 * 60 * 60 ;
+
+if(isset($options['total_counter_enable_options'])){
+	if($options['total_counter_enable_options'] =='1'){
+		$enable_counter = 1;
+	}
+}else{
+	$enable_counter = 0;
+}
+
 ?>
+
+
 <?php if( isset( $options['share_text'] ) && $options['share_text'] !='' ){ ?>
 <div class='apss-share-text'><?php echo $options['share_text']; ?></div>
 <?php
 }
+
+$total_count = 0;
+
 foreach( $options['social_networks'] as $key=>$value ){
 	if( intval($value)=='1' ){
+		$count = $this->get_count($key, $url);
+		$total_count += $count;
 		switch( $key ){
 			//counter available for facebook
 			case 'facebook':
@@ -170,4 +186,11 @@ foreach( $options['social_networks'] as $key=>$value ){
 	}
 
 }
+if( isset($enable_counter) && $enable_counter == '1' ){
 ?>
+<div class='apss-total-share-count'>
+	<span class='apss-count-number'><?php echo $total_count; ?></span>
+	<div class="apss-total-shares"><span class='apss-total-text'><?php echo _e( ' Total', APSS_TEXT_DOMAIN ); ?></span>
+	<span class='apss-shares-text'><?php echo _e( ' Shares', APSS_TEXT_DOMAIN ); ?></span></div>
+</div>
+<?php } ?>

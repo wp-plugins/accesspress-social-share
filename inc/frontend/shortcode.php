@@ -4,7 +4,7 @@ global $post;
 $options = get_option( APSS_SETTING_NAME );
 $apss_link_open_option=($options['dialog_box_options']=='1') ? "_blank": "";
 $twitter_user=$options['twitter_username'];
-$counter_enable_options=$options['counter_enable_options'];
+//$counter_enable_options=$options['counter_enable_options'];
 $icon_set_value=$options['social_icon_set'];
 $url= get_permalink();
 $cache_period = ($options['cache_period'] != '') ? $options['cache_period']*60*60 : 24 * 60 * 60 ;
@@ -17,8 +17,28 @@ if( isset($attr['networks']) ){
 			$new_array[$network] = '1';
 		}
 		$options['social_networks'] = $new_array;
+}
+
+if(isset($attr['total_counter'])){
+	if($attr['total_counter'] =='1'){
+		$total_counter_enable_options = 1;
 	}
+}else{
+	$total_counter_enable_options = 0;
+}
+
+
+if(isset($attr['counter'])){
+	if($attr['counter'] =='1'){
+		$counter_enable_options = 1;
+	}
+}else{
+	$counter_enable_options = 0;
+}
+
+
 ?>
+
 <div class='apss-social-share apss-theme-<?php echo $icon_set_value; ?> clearfix'>
 <?php
 $title=str_replace('+', '%20', urlencode($post->post_title));
@@ -28,8 +48,20 @@ $excerpt= substr($content, 0, 100).'...';
 }else{
 	$excerpt = $content;
 }
+
+?>
+
+<?php if( isset( $attr['share_text'] ) && $attr['share_text'] !='' ){ ?>
+<div class='apss-share-text'><?php echo $attr['share_text']; ?></div>
+<?php } ?>
+
+
+<?php
+$total_count = 0;
 foreach( $options['social_networks'] as $key=>$value ){
 	if( intval($value)=='1' ){
+		$count = $this->get_count($key, $url);
+		$total_count += $count;
 		switch($key){
 			//counter available for facebook
 			case 'facebook':
@@ -185,5 +217,11 @@ foreach( $options['social_networks'] as $key=>$value ){
 	}
 }
 
-?>
+if( isset($total_counter_enable_options) && $total_counter_enable_options == '1' ){ ?>
+<div class='apss-total-share-count'>
+	<span class='apss-count-number'><?php echo $total_count; ?></span>
+	<div class="apss-total-shares"><span class='apss-total-text'><?php echo _e( ' Total', APSS_TEXT_DOMAIN ); ?></span>
+	<span class='apss-shares-text'><?php echo _e( ' Shares', APSS_TEXT_DOMAIN ); ?></span></div>
+</div>
+<?php } ?>
 </div>

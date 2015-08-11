@@ -25,8 +25,15 @@
   <dd><p>You can use shortcode for the display of the social share in the contents. Optionally You can enter the name of the networks you want to display. The networks will be displayed in the order of entered networks.
     <ul class="how-list">
       <li><i class="fa fa-check"></i>Example 1: <code>[apss-share]</code></li>
-      <li><i class="fa fa-check"></i>Example 2: <code>[apss-share networks='facebook, twitter, pinterest']</code></li>
-      <li><i class="fa fa-check"></i>Available network parameters are: facebook, twitter, google-plus, pinterest, linkedin, digg, email, print</li>
+      <li>Available shortcode parameters</li>
+        <ul>
+          <li><i class="fa fa-check"></i>networks : You can define which social medias to show in the shortcode. You need to enter the networks name in string in comma separated values. If you don't want to choose which social medias to appear in shortcode, you can discard this option. </li>
+          <li>Available network parameters are: facebook, twitter, google-plus, pinterest, linkedin, digg, email, print</li>
+          <li><i class="fa fa-check"></i>share_text: You can add the share text. To use share text use share_text='text to be shared'. If you don't use this parameter the share text will not appear in shortcode.</li>
+          <li><i class="fa fa-check"></i>counter : You can enable or disable the share counter. To enable the share count use counter='1' and to disable it simply don't use counter parameter or use parameter counter='0'.</li>
+          <li><i class="fa fa-check"></i>total_counter : You can enable or disable the total share counter. To enable the total share count use total_counter='1' and to disable it simply don't use total_counter parameter or use parameter total_counter='0'.</li>
+        </ul>
+      <li><i class="fa fa-check"></i>Example 2: <code>[apss-share networks='facebook, twitter, pinterest' share_text='Share it' counter='1' total_counter='1']</code></li>
       </ul>
   </p></dd>
   <dd>
