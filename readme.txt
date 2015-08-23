@@ -4,7 +4,7 @@ Tags: social share counter, social share, social media share, social network sha
 Donate link: http://accesspressthemes.com/donation/
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 2.0.8
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,7 +94,7 @@ For complete information and documentation regarding plugin, please visit below 
 
 [Docs](https://accesspressthemes.com/documentation/documentation-plugin-instruction-accesspress-social-share/ )
 
-[Demo](http://accesspressthemes.com/demo/wordpress-plugins/accesspress-social-share/)
+[Demo](http://demo.accesspressthemes.com/wordpress-plugins/accesspress-social-share/)
 
 == Installation ==
 1. Unzip accesspress-social-share.zip
@@ -131,6 +131,14 @@ Yes. You can use the AccessPress social share by using shortcode anywhere you wa
 6. Backend Miscellaneous Settings Section
 
 == Changelog ==
+= 3.0.0 =
+* Addition of the options of meta box for posts and pages to enable and disable the social share for it's content.
+* Removal of the loading text instead used the previous share counters.
+
+= 2.0.9 =
+* changed the facebook count url for the facebook share count as pervious share count url is returning total of share and likes as shares count.
+* Demo url link change.
+
 = 2.0.8 =
 * Added more shortcode attributes - counter display option, share text option. Please see how to use section.
 * Added 1 more theme.

@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 2.0.8
+Version: 3.0.0
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -30,7 +30,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '2.0.8' );
+	define( 'APSS_VERSION', '3.0.0' );
 }
 
 if( !defined('APSS_TEXT_DOMAIN')){
@@ -65,6 +65,8 @@ if( !class_exists( 'APSS_Class' ) ){
 			add_action('admin_post_apss_clear_cache',array($this,'apss_clear_cache'));//clear the cache of the social share counter.
             add_shortcode('apss-share', array($this, 'apss_shortcode')); //adds a shortcode
             add_shortcode('apss-count', array($this, 'apss_count_shortcode')); //adds a share count shortcode
+            add_action('add_meta_boxes', array($this, 'social_meta_box')); //for providing the option to disable the social share option in each frontend page
+            add_action('save_post', array($this, 'save_meta_values')); //function to save the post meta values of a plugin.
 
             add_action('wp_ajax_nopriv_frontend_counter', array($this, 'frontend_counter')); //fetching of the social share count.
             add_action('wp_ajax_frontend_counter', array($this, 'frontend_counter')); // action for ajax counter.
@@ -131,17 +133,19 @@ if( !class_exists( 'APSS_Class' ) ){
                 ob_get_clean();
 
                  $share_shows_in_options=$options['share_options'];
+                 $content_flag = get_post_meta($post->ID, 'apss_content_flag', true);
+
                  $all = in_array('all', $options['share_options']);
-                 $is_lists_authorized = (is_search()) && $all ? true : false;
+                 $is_lists_authorized = (is_search() && $content_flag !='1' ) && $all ? true : false;
 
                  $is_attachement_check = in_array('attachment', $options['share_options']);
                  $is_attachement = (is_attachment() && $is_attachement_check ) ? true : false;
 
                  $front_page = in_array('front_page', $options['share_options']);
-                 $is_front_page=(is_front_page()) && $front_page ? true : false;
+                 $is_front_page=(is_front_page() && $content_flag != '1' ) && $front_page ? true : false;
                  
                  $share_shows_in_options=$options['share_options'];
-                 $is_singular = is_singular($share_shows_in_options) && !is_front_page() ? true : false;
+                 $is_singular = is_singular($share_shows_in_options) && !is_front_page() && $content_flag != '1' ? true : false;
 
                  if(!empty($share_shows_in_options)){
                     $is_tax =is_tax($share_shows_in_options);
@@ -283,6 +287,70 @@ if( !class_exists( 'APSS_Class' ) ){
             }
          }
 
+        ///////////////////////////for post meta options//////////////////////////////////
+        /**
+         * Adds a section in all the post and page section to disable the share options in frontend pages
+         */
+        function social_meta_box() {
+            add_meta_box('ap-share-box', 'AccessPress social share options', array($this, 'metabox_callback'), '', 'side', 'core');
+        }
+
+        function metabox_callback($post) {
+            wp_nonce_field('save_meta_values', 'ap_share_meta_nonce');
+            $content_flag = get_post_meta($post->ID, 'apss_content_flag', true);
+            ?>
+            <label><input type="checkbox" value="1" name="apss_content_flag" <?php checked($content_flag, true) ?>/><?php _e('Hide share icons in content',  APSS_TEXT_DOMAIN ); ?></label><br>
+            <?php
+        }
+
+        /**
+         * Save Share Flags on post save
+         */
+        function save_meta_values($post_id) {
+
+            /*
+             * We need to verify this came from our screen and with proper authorization,
+             * because the save_post action can be triggered at other times.
+             */
+
+            // Check if our nonce is set.
+            if (!isset($_POST['ap_share_meta_nonce'])) {
+                return;
+            }
+
+            // Verify that the nonce is valid.
+            if (!wp_verify_nonce($_POST['ap_share_meta_nonce'], 'save_meta_values')) {
+                return;
+            }
+
+            // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+                return;
+            }
+
+            // Check the user's permissions.
+            if (isset($_POST['post_type']) && 'page' == $_POST['post_type']) {
+
+                if (!current_user_can('edit_page', $post_id)) {
+                    return;
+                }
+            } else {
+
+                if (!current_user_can('edit_post', $post_id)) {
+                    return;
+                }
+            }
+
+            /* OK, it's safe for us to save the data now. */
+            // Make sure that it is set.
+            $content_flag = (isset($_POST['apss_content_flag']) && $_POST['apss_content_flag'] == 1) ? 1 : 0;
+            
+            // Update the meta field in the database.
+            update_post_meta($post_id, 'apss_content_flag', $content_flag);
+        }
+
+        ////////////////////////////////////////////////////////////
+
 		//plugins backend admin page
 		function main_page() {
 			include('inc/backend/main-page.php');
@@ -324,9 +392,12 @@ if( !class_exists( 'APSS_Class' ) ){
             //for setting the counter transient in separate options value
             $apss_social_counts_transients = get_option( APSS_COUNT_TRANSIENTS );
             if (false === $fb_transient_count) {
-                $json_string = $this->get_json_values( 'https://graph.facebook.com/?id=' . $url );
+                // $json_string = $this->get_json_values( 'https://graph.facebook.com/?id=' . $url );
+                // $json = json_decode( $json_string, true );
+                // $facebook_count = isset($json['shares']) ? intval( $json['shares'] ) : 0;
+                $json_string = $this->get_json_values( 'https://api.facebook.com/method/links.getStats?urls=' . $url.'&format=json' );
                 $json = json_decode( $json_string, true );
-                $facebook_count = isset($json['shares']) ? intval( $json['shares'] ) : 0;
+                $facebook_count = isset( $json[0]['share_count'] ) ? intval( $json[0]['share_count'] ) : 0;
                 set_transient($fb_transient, $facebook_count, $cache_period * HOUR_IN_SECONDS );
                 if( !in_array( $fb_transient, $apss_social_counts_transients) ){
                     $apss_social_counts_transients[] = $fb_transient;

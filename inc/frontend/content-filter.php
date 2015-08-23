@@ -33,6 +33,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 			//counter available for facebook
 			case 'facebook':
 			$link = 'https://www.facebook.com/sharer/sharer.php?u='.$url;
+			$count = $this->get_count($key, $url);
 			?>
 			<div class='apss-facebook apss-single-icon'>
 					<a rel='nofollow' title="<?php _e('Share on Facebook', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
@@ -42,7 +43,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 									<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
 							</div>
 							<?php if(isset($counter_enable_options) && $counter_enable_options=='1'){ ?>
-		                    <div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key; ?>">Loading...</div>
+		                    <div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key; ?>"><?php echo $count; ?></div>
 		                    <?php } ?>
 					</a>
 			</div>
@@ -57,6 +58,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 				$twitter_user = 'via='.$twitter_user;
 			}
 			$link ="https://twitter.com/intent/tweet?text=$title&amp;url=$url_twitter&amp;$twitter_user";
+			$count = $this->get_count($key, $url);
 			?>
 			<div class='apss-twitter apss-single-icon'>
 				<a rel='nofollow' title="<?php _e('Share on Twitter', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href="<?php echo $link; ?>">
@@ -65,7 +67,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 						<span class='apss-social-text'><?php _e( 'Share on Twitter', APSS_TEXT_DOMAIN ); ?></span><span class='apss-share'><?php _e( 'Tweet', APSS_TEXT_DOMAIN ); ?></span>
 					</div>
 					<?php if( isset( $counter_enable_options ) && $counter_enable_options=='1'){ ?>
-					<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key; ?>">Loading...</div>
+					<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key; ?>"><?php echo $count; ?></div>
 					<?php } ?>
 				</a>
 			</div>
@@ -75,6 +77,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 			//counter available for google plus
 			case 'google-plus':
 			$link = 'https://plus.google.com/share?url='.$url;
+			$count = $this->get_count($key, $url);
 			?>
 			<div class='apss-google-plus apss-single-icon'>
 				<a rel='nofollow' title="<?php _e('Share on Google Plus', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
@@ -84,7 +87,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 						<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
 					</div>
 					<?php if(isset($counter_enable_options) && $counter_enable_options=='1'){ ?>
-					<div class='count apss-count' data-url='<?php echo $url;?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key;?>">Loading...</div>
+					<div class='count apss-count' data-url='<?php echo $url;?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key;?>"><?php echo $count; ?></div>
 					<?php } ?>
 				</a>
 			</div>
@@ -93,6 +96,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 			
 			//counter available for pinterest
 			case 'pinterest':
+			$count = $this->get_count($key, $url);
 			?>
 
 			<div class='apss-pinterest apss-single-icon'>
@@ -103,7 +107,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 					<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
 					</div>
 					<?php if( isset( $counter_enable_options ) && $counter_enable_options=='1' ){ ?>
-					<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key;?>">Loading...</div>
+					<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key;?>"><?php echo $count; ?></div>
 					<?php } ?>
 
 				</a>
@@ -114,6 +118,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 			//couter available for linkedin
 			case 'linkedin':
 			$link = "http://www.linkedin.com/shareArticle?mini=true&amp;title=".$title."&amp;url=".$url."&amp;summary=".$excerpt;
+			$count = $this->get_count($key, $url);
 			?>
 
 			<div class='apss-linkedin apss-single-icon'>
@@ -123,7 +128,7 @@ foreach( $options['social_networks'] as $key=>$value ){
 					<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
 				</div>
 				<?php if( isset( $counter_enable_options ) && $counter_enable_options=='1' ){ ?>
-				<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key; ?>">Loading...</div>
+				<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url.'_'.$key; ?>"><?php echo $count; ?></div>
 				<?php } ?>
 			</a>
 			</div>
