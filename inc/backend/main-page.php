@@ -105,13 +105,6 @@ if(isset($_SESSION['apss_message'])){ ?>
 			<?php for($i=1; $i<=6; $i++){ ?>
 			<p><input id="apss_icon_set_<?php echo $i; ?>" value="<?php echo $i; ?>" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] == $i ){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_<?php echo $i; ?>"><span class="apss_demo_icon apss_demo_icons_<?php echo $i; ?>"></span><?php _e("Theme $i", APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src='<?php echo APSS_IMAGE_DIR."/theme/theme$i.jpg";?>'/></div></label></p>
 			<?php } ?>
-			<?php /* ?>
-			<p><input id="apss_icon_set_1" value="1" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='1'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_1"><span class="apss_demo_icon apss_demo_icons_1"></span><?php _e('Theme 1', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme1.jpg';?>"/></div></label></p>
-			<p><input id="apss_icon_set_2" value="2" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='2'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_2"><span class="apss_demo_icon apss_demo_icons_2"></span><?php _e('Theme 2', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme2.jpg';?>"/></div></label></p>
-			<p><input id="apss_icon_set_3" value="3" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='3'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_3"><span class="apss_demo_icon apss_demo_icons_3"></span><?php _e('Theme 3', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme3.jpg';?>"/></div></label></p>
-			<p><input id="apss_icon_set_4" value="4" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='4'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_4"><span class="apss_demo_icon apss_demo_icons_4"></span><?php _e('Theme 4', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme4.jpg';?>"/></div></label></p>
-			<p><input id="apss_icon_set_5" value="5" name="apss_share_settings[social_icon_set]" type="radio" <?php if($options['social_icon_set'] =='5'){ echo "checked='checked'"; } ?> ><label for="apss_icon_set_5"><span class="apss_demo_icon apss_demo_icons_5"></span><?php _e('Theme 5', APSS_TEXT_DOMAIN ); ?><div class="apss-theme-image"><img src="<?php echo APSS_IMAGE_DIR.'/theme/theme5.jpg';?>"/></div></label></p>
-			<?php */ ?>
 		</div>
 	</div>
 	
@@ -119,14 +112,24 @@ if(isset($_SESSION['apss_message'])){ ?>
 		<h2><?php _e( 'Miscellaneous settings: ', APSS_TEXT_DOMAIN ); ?> </h2>
 			<h4><?php _e('Please setup these additional settings:', APSS_TEXT_DOMAIN ); ?></h4>
 		
-		<div class="apss-share-text-settings">
+		<div class="apss-share-text-settings clearfix">
+			<h4><?php _e( 'Disable the plugins frontend assets?', APSS_TEXT_DOMAIN ); ?> </h4>
+			<div class="misc-opt"><input type="radio" id='disable_frontend_assets_n' name="apss_share_settings[disable_frontend_assets]" value="0" <?php if(isset($options['disable_frontend_assets']) && $options['disable_frontend_assets'] =='0'){ echo "checked='checked'"; } ?> /><label for="disable_frontend_assets_n"><?php _e( 'No', APSS_TEXT_DOMAIN ); ?></label></div>
+			<div class="misc-opt"><input type="radio" id='disable_frontend_assets_y' name="apss_share_settings[disable_frontend_assets]" value="1" <?php if(isset($options['disable_frontend_assets']) && $options['disable_frontend_assets'] =='1'){ echo "checked='checked'"; } ?> /><label for="disable_frontend_assets_y"><?php _e( 'Yes', APSS_TEXT_DOMAIN ); ?></label></div>
+			<br />
+			<div class="apss_notes_cache_settings">
+				<?php _e( 'Please set this value if you don\'t want to use plguins frontend assets(js and css files).', APSS_TEXT_DOMAIN ); ?>
+			</div>
+		</div>
+		<br />
+		<div class="apss-share-text-settings clearfix">
 			<?php _e( 'Share text:', APSS_TEXT_DOMAIN ); ?> <input type="text" name="apss_share_settings[share_text]"  value="<?php if(isset($options['share_text'])){echo $options['share_text']; } ?>" />
 			<div class="apss_notes_cache_settings">
 				<?php _e( 'Please enter the share text to make it appear above social share icons. Leave blank if you don\'t want to use share text.', APSS_TEXT_DOMAIN ); ?>
 			</div>
 		</div>
 		<br />
-		<div class="apss-twitter-settings">
+		<div class="apss-twitter-settings clearfix">
 			<?php _e( 'Twitter username:', APSS_TEXT_DOMAIN ); ?> <input type="text" name="apss_share_settings[twitter_username]"  value="<?php echo $options['twitter_username']; ?>" />
 		</div>
 		

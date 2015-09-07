@@ -18,11 +18,9 @@ if(isset($options['total_counter_enable_options'])){
 ?>
 
 
-<?php if( isset( $options['share_text'] ) && $options['share_text'] !='' ){ ?>
-<div class='apss-share-text'><?php echo $options['share_text']; ?></div>
-<?php
-}
+<?php if( isset( $options['share_text'] ) && $options['share_text'] !='' ){ ?> <div class='apss-share-text'><?php echo $options['share_text']; ?></div> <?php } ?>
 
+<?php
 $total_count = 0;
 
 foreach( $options['social_networks'] as $key=>$value ){
@@ -198,4 +196,4 @@ if( isset($enable_counter) && $enable_counter == '1' ){
 	<div class="apss-total-shares"><span class='apss-total-text'><?php echo _e( ' Total', APSS_TEXT_DOMAIN ); ?></span>
 	<span class='apss-shares-text'><?php echo _e( ' Shares', APSS_TEXT_DOMAIN ); ?></span></div>
 </div>
-<?php } ?>
+<?php }

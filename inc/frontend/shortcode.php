@@ -50,11 +50,7 @@ $excerpt= substr($content, 0, 100).'...';
 
 ?>
 
-<?php if( isset( $attr['share_text'] ) && $attr['share_text'] !='' ){ ?>
-<div class='apss-share-text'><?php echo $attr['share_text']; ?></div>
-<?php } ?>
-
-
+<?php if( isset( $attr['share_text'] ) && $attr['share_text'] !='' ){ ?> <div class='apss-share-text'><?php echo $attr['share_text']; ?></div> <?php } ?>
 <?php
 $total_count = 0;
 foreach( $options['social_networks'] as $key=>$value ){

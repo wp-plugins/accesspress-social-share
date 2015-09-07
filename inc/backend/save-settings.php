@@ -20,6 +20,7 @@
 	  }
 
  	$apss_share_settings['social_networks']=$social_network_array;
+ 	$apss_share_settings['disable_frontend_assets'] = isset($_POST['apss_share_settings']['disable_frontend_assets']) ? $_POST['apss_share_settings']['disable_frontend_assets'] : '0';
  	$apss_share_settings['share_text'] = $_POST['apss_share_settings']['share_text'];
   	$apss_share_settings['twitter_username'] = stripslashes_deep($_POST['apss_share_settings']['twitter_username']);
  	$apss_share_settings['counter_enable_options'] = $_POST['apss_share_settings']['counter_enable_options'];

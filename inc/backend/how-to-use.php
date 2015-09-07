@@ -39,7 +39,9 @@
   <dd>
     <p>You can use shortcode [apss-count] for the display of the social share count only in the contents. You need to enter network name you want to display.
         <ul class="how-list">
-          <li><i class="fa fa-check"></i>Example 1: <code>[apss-count network='facebook']</code></li>
+          <li><i class="fa fa-check"></i>Example 1: <code>[apss-count network='facebook']</code>
+             Please note that this shortcode takes only one network value at a time. So if you want to fetch the share count for facebook and twitter you need to use <code>[apss-count network='facebook']</code> and <code>[apss-count network='twitter']</code> respectively.
+          </li>
           <li><i class="fa fa-check"></i>Available network parameters are: facebook, twitter, google-plus, pinterest, linkedin</li>
         </ul>
     </p>

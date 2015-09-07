@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin name: AccessPress Social Share
 Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
 Description: A plugin to add various social media shares to a site with dynamic configuration options.
-Version: 3.0.0
+Version: 3.0.3
 Author: AccessPress Themes
 Author URI: http://accesspressthemes.com
 Text Domain:apss-share
@@ -30,7 +30,7 @@ if( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '3.0.0' );
+	define( 'APSS_VERSION', '3.0.3' );
 }
 
 if( !defined('APSS_TEXT_DOMAIN')){
@@ -58,8 +58,14 @@ if( !class_exists( 'APSS_Class' ) ){
 			add_action('init',array( $this,'session_init')); //start the session if not started yet.
 			add_action('admin_enqueue_scripts', array($this, 'register_admin_assets')); //registers all the assets required for wp-admin
 			add_filter( 'the_content', array($this, 'apss_the_content_filter' )); // add the filter function for display of social share icons in frontend
-            add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_assets' ) ); //registers all the assets required for the frontend
-			add_action( 'admin_menu', array( $this, 'add_apss_menu' ) ); //register the plugin menu in backend
+            
+            if(isset($this->apss_settings['disable_frontend_assets']) && $this->apss_settings['disable_frontend_assets'] != '1'){
+                add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_assets' ) ); //registers all the assets required for the frontend
+            }else if(!isset($this->apss_settings['disable_frontend_assets'])){
+                add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_assets' ) ); //registers all the assets required for the frontend
+            }
+			
+            add_action( 'admin_menu', array( $this, 'add_apss_menu' ) ); //register the plugin menu in backend
 			add_action('admin_post_apss_save_options', array( $this, 'apss_save_options')); //save the options in the wordpress options table.
 			add_action('admin_post_apss_restore_default_settings',array($this,'apss_restore_default_settings'));//restores default settings.
 			add_action('admin_post_apss_clear_cache',array($this,'apss_clear_cache'));//clear the cache of the social share counter.
@@ -104,7 +110,7 @@ if( !class_exists( 'APSS_Class' ) ){
              * */
             if( isset($_GET['page']) && $_GET['page']=='apss-share' ){
             wp_enqueue_style( 'aps-admin-css', APSS_CSS_DIR . '/backend.css', false, APSS_VERSION ); //registering plugin admin css
-            wp_enqueue_style( 'fontawesome-css', APSS_CSS_DIR . '/font-awesome.min.css', false, APSS_VERSION );
+            wp_enqueue_style( 'fontawesome-css', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css', false, APSS_VERSION );
 
             /**
              * Backend JS
@@ -185,7 +191,7 @@ if( !class_exists( 'APSS_Class' ) ){
          * Registers Frontend Assets
          * */
         function register_frontend_assets() {
-            wp_enqueue_style( 'apss-font-awesome', APSS_CSS_DIR.'/font-awesome.min.css',array(),APSS_VERSION );
+            wp_enqueue_style( 'apss-font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css', array(), APSS_VERSION );
             wp_enqueue_style( 'apss-font-opensans', '//fonts.googleapis.com/css?family=Open+Sans',array(),false );
             wp_enqueue_style( 'apss-frontend-css', APSS_CSS_DIR . '/frontend.css', array( 'apss-font-awesome' ), APSS_VERSION );
             wp_enqueue_script( 'apss-frontend-mainjs', APSS_JS_DIR . '/frontend.js', array('jquery'), APSS_VERSION, true );
@@ -397,7 +403,7 @@ if( !class_exists( 'APSS_Class' ) ){
                 // $facebook_count = isset($json['shares']) ? intval( $json['shares'] ) : 0;
                 $json_string = $this->get_json_values( 'https://api.facebook.com/method/links.getStats?urls=' . $url.'&format=json' );
                 $json = json_decode( $json_string, true );
-                $facebook_count = isset( $json[0]['share_count'] ) ? intval( $json[0]['share_count'] ) : 0;
+                $facebook_count = isset( $json[0]['total_count'] ) ? intval( $json[0]['total_count'] ) : 0;
                 set_transient($fb_transient, $facebook_count, $cache_period * HOUR_IN_SECONDS );
                 if( !in_array( $fb_transient, $apss_social_counts_transients) ){
                     $apss_social_counts_transients[] = $fb_transient;
