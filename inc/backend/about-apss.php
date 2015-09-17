@@ -15,7 +15,7 @@
 		</p>
 		<div class="halfseperator"></div>
 		<p><strong>If you like to buy premium version of this plugin please check here:</strong><br />
-		<a href="http://accesspressthemes.com/wordpress-plugins/accesspress-social-share-premium/" target="_blank">http://accesspressthemes.com/wordpress-plugins/accesspress-social-share-premium/ </a>
+		<a href="https://accesspressthemes.com/wordpress-plugins/accesspress-social-pro/" target="_blank">https://accesspressthemes.com/wordpress-plugins/accesspress-social-pro/</a>
 		</p>
 		<div class="halfseperator"></div>
 		<p><strong>Feature comparison between free and premium plugin is here:</strong><br />
