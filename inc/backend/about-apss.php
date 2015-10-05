@@ -1,5 +1,5 @@
 <?php defined('ABSPATH') or die("No script kiddies please!"); ?>
-<h2><?php _e( 'About Us', APSS_TEXT_DOMAIN );?></h2>
+<h2><?php _e( 'About Us', 'accesspress-social-share' );?></h2>
 	<div class="ap-tab-wrapper">
 		<p><strong>AccessPress Social Share</strong> - is a FREE WordPress Plugin by AccessPress Themes. </p>
 
@@ -26,14 +26,14 @@
 				<h3>Other products by AccessPress themes </h3>
 				<div class="other-products-inner">
 					<div class="product">
-					<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/aplite.png" alt="<?php esc_attr_e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>" /></div>
+					<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/aplite.png" alt="<?php esc_attr_e( 'AccessPress Social Share', 'accesspress-social-share' ); ?>" /></div>
 					<div class="productext"><p><strong>AccessPress Lite</strong> - A very popular Free WordPress theme, available in WordPress.org<br />
 						<a href="http://accesspressthemes.com/wordpress-themes/accesspress-lite/" target="_blank">http://accesspressthemes.com/wordpress-themes/accesspress-lite/</a></p>
 					</div>
 					</div>
 
 					<div class="product">
-					<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/appro.png" alt="<?php esc_attr_e( 'AccessPress Social Share', APSS_TEXT_DOMAIN ); ?>" /></div>
+					<div class="logo-product"><img src="<?php echo APSS_IMAGE_DIR;?>/appro.png" alt="<?php esc_attr_e( 'AccessPress Social Share', 'accesspress-social-share' ); ?>" /></div>
 					<div class="productext"><p><strong>AccessPress Pro</strong> - Premium version of AccessPress lite<br />
 						<a href="http://accesspressthemes.com/wordpress-themes/accesspress-lite/" target="_blank">http://accesspressthemes.com/wordpress-themes/accesspress-pro/</a></p>
 					</div>

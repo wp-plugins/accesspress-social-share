@@ -33,11 +33,11 @@ foreach ( $options['social_networks'] as $key => $value ) {
 				$count = $this->get_count( $key, $url );
 				?>
 				<div class='apss-facebook apss-single-icon'>
-					<a rel='nofollow' title="<?php _e( 'Share on Facebook', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
+					<a rel='nofollow' title="<?php _e( 'Share on Facebook', 'accesspress-social-share' ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
 						<div class='apss-icon-block clearfix'>
 							<i class='fa fa-facebook'></i>
-							<span class='apss-social-text'><?php _e( 'Share on Facebook', APSS_TEXT_DOMAIN ); ?></span>
-							<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Share on Facebook', 'accesspress-social-share' ); ?></span>
+							<span class='apss-share'><?php _e( 'Share', 'accesspress-social-share' ); ?></span>
 						</div>
 						<?php if ( isset( $counter_enable_options ) && $counter_enable_options == '1' ) { ?>
 							<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url . '_' . $key; ?>"><?php echo $count; ?></div>
@@ -58,10 +58,10 @@ foreach ( $options['social_networks'] as $key => $value ) {
 				$count = $this->get_count( $key, $url );
 				?>
 				<div class='apss-twitter apss-single-icon'>
-					<a rel='nofollow' title="<?php _e( 'Share on Twitter', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href="<?php echo $link; ?>">
+					<a rel='nofollow' title="<?php _e( 'Share on Twitter', 'accesspress-social-share' ); ?>" target='<?php echo $apss_link_open_option; ?>' href="<?php echo $link; ?>">
 						<div class='apss-icon-block clearfix'>
 							<i class='fa fa-twitter'></i>
-							<span class='apss-social-text'><?php _e( 'Share on Twitter', APSS_TEXT_DOMAIN ); ?></span><span class='apss-share'><?php _e( 'Tweet', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Share on Twitter', 'accesspress-social-share' ); ?></span><span class='apss-share'><?php _e( 'Tweet', 'accesspress-social-share' ); ?></span>
 						</div>
 						<?php if ( isset( $counter_enable_options ) && $counter_enable_options == '1' ) { ?>
 							<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url . '_' . $key; ?>"><?php echo $count; ?></div>
@@ -77,11 +77,11 @@ foreach ( $options['social_networks'] as $key => $value ) {
 				$count = $this->get_count( $key, $url );
 				?>
 				<div class='apss-google-plus apss-single-icon'>
-					<a rel='nofollow' title="<?php _e( 'Share on Google Plus', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
+					<a rel='nofollow' title="<?php _e( 'Share on Google Plus', 'accesspress-social-share' ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
 						<div class='apss-icon-block clearfix'>
 							<i class='fa fa-google-plus'></i>
-							<span class='apss-social-text'><?php _e( 'Share on Google Plus', APSS_TEXT_DOMAIN ); ?></span>
-							<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Share on Google Plus', 'accesspress-social-share' ); ?></span>
+							<span class='apss-share'><?php _e( 'Share', 'accesspress-social-share' ); ?></span>
 						</div>
 						<?php if ( isset( $counter_enable_options ) && $counter_enable_options == '1' ) { ?>
 							<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url . '_' . $key; ?>"><?php echo $count; ?></div>
@@ -97,11 +97,11 @@ foreach ( $options['social_networks'] as $key => $value ) {
 				?>
 
 				<div class='apss-pinterest apss-single-icon'>
-					<a rel='nofollow' title="<?php _e( 'Share on Pinterest', APSS_TEXT_DOMAIN ); ?>" href='javascript:pinIt();'>
+					<a rel='nofollow' title="<?php _e( 'Share on Pinterest', 'accesspress-social-share' ); ?>" href='javascript:pinIt();'>
 						<div class='apss-icon-block clearfix'>
 							<i class='fa fa-pinterest'></i>
-							<span class='apss-social-text'><?php _e( 'Share on Pinterest', APSS_TEXT_DOMAIN ); ?></span>
-							<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Share on Pinterest', 'accesspress-social-share' ); ?></span>
+							<span class='apss-share'><?php _e( 'Share', 'accesspress-social-share' ); ?></span>
 						</div>
 						<?php if ( isset( $counter_enable_options ) && $counter_enable_options == '1' ) { ?>
 							<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url . '_' . $key; ?>"><?php echo $count; ?></div>
@@ -119,10 +119,10 @@ foreach ( $options['social_networks'] as $key => $value ) {
 				?>
 
 				<div class='apss-linkedin apss-single-icon'>
-					<a rel='nofollow' title="<?php _e( 'Share on LinkedIn', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
+					<a rel='nofollow' title="<?php _e( 'Share on LinkedIn', 'accesspress-social-share' ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
 						<div class='apss-icon-block clearfix'><i class='fa fa-linkedin'></i>
-							<span class='apss-social-text'><?php _e( 'Share on LinkedIn', APSS_TEXT_DOMAIN ); ?></span>
-							<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Share on LinkedIn', 'accesspress-social-share' ); ?></span>
+							<span class='apss-share'><?php _e( 'Share', 'accesspress-social-share' ); ?></span>
 						</div>
 						<?php if ( isset( $counter_enable_options ) && $counter_enable_options == '1' ) { ?>
 							<div class='count apss-count' data-url='<?php echo $url; ?>' data-social-network='<?php echo $key; ?>' data-social-detail="<?php echo $url . '_' . $key; ?>"><?php echo $count; ?></div>
@@ -137,11 +137,11 @@ foreach ( $options['social_networks'] as $key => $value ) {
 				$link = "http://digg.com/submit?phase=2%20&amp;url=" . $url . "&amp;title=" . $title;
 				?>
 				<div class='apss-digg apss-single-icon'>
-					<a rel='nofollow' title="<?php _e( 'Share on Digg', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
+					<a rel='nofollow' title="<?php _e( 'Share on Digg', 'accesspress-social-share' ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
 						<div class='apss-icon-block clearfix'>
 							<i class='fa fa-digg'></i>
-							<span class='apss-social-text'><?php _e( 'Share on Digg', APSS_TEXT_DOMAIN ); ?></span>
-							<span class='apss-share'><?php _e( 'Share', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Share on Digg', 'accesspress-social-share' ); ?></span>
+							<span class='apss-share'><?php _e( 'Share', 'accesspress-social-share' ); ?></span>
 						</div>
 					</a>
 				</div>
@@ -158,11 +158,11 @@ foreach ( $options['social_networks'] as $key => $value ) {
 				}
 				?>
 				<div class='apss-email apss-single-icon'>
-					<a rel='nofollow' class='share-email-popup' title="<?php _e( 'Share it on Email', APSS_TEXT_DOMAIN ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
+					<a rel='nofollow' class='share-email-popup' title="<?php _e( 'Share it on Email', 'accesspress-social-share' ); ?>" target='<?php echo $apss_link_open_option; ?>' href='<?php echo $link; ?>'>
 						<div class='apss-icon-block clearfix'>
 							<i class='fa  fa-envelope'></i>
-							<span class='apss-social-text'><?php _e( 'Send email', APSS_TEXT_DOMAIN ); ?></span>
-							<span class='apss-share'><?php _e( 'Mail', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Send email', 'accesspress-social-share' ); ?></span>
+							<span class='apss-share'><?php _e( 'Mail', 'accesspress-social-share' ); ?></span>
 						</div>
 					</a>
 				</div>
@@ -173,11 +173,11 @@ foreach ( $options['social_networks'] as $key => $value ) {
 			case 'print':
 				?>
 				<div class='apss-print apss-single-icon'>
-					<a rel='nofollow' title="<?php _e( 'Print', APSS_TEXT_DOMAIN ); ?>" href='javascript:void(0);' onclick='window.print();
+					<a rel='nofollow' title="<?php _e( 'Print', 'accesspress-social-share' ); ?>" href='javascript:void(0);' onclick='window.print();
 				            return false;'>
 						<div class='apss-icon-block clearfix'><i class='fa fa-print'></i>
-							<span class='apss-social-text'><?php _e( 'Print', APSS_TEXT_DOMAIN ); ?></span>
-							<span class='apss-share'><?php _e( 'Print', APSS_TEXT_DOMAIN ); ?></span>
+							<span class='apss-social-text'><?php _e( 'Print', 'accesspress-social-share' ); ?></span>
+							<span class='apss-share'><?php _e( 'Print', 'accesspress-social-share' ); ?></span>
 						</div>
 					</a>
 				</div>
@@ -190,8 +190,8 @@ if ( isset( $enable_counter ) && $enable_counter == '1' ) {
 	?>
 	<div class='apss-total-share-count'>
 		<span class='apss-count-number'><?php echo $total_count; ?></span>
-		<div class="apss-total-shares"><span class='apss-total-text'><?php echo _e( ' Total', APSS_TEXT_DOMAIN ); ?></span>
-			<span class='apss-shares-text'><?php echo _e( ' Shares', APSS_TEXT_DOMAIN ); ?></span></div>
+		<div class="apss-total-shares"><span class='apss-total-text'><?php echo _e( ' Total', 'accesspress-social-share' ); ?></span>
+			<span class='apss-shares-text'><?php echo _e( ' Shares', 'accesspress-social-share' ); ?></span></div>
 	</div>
 <?php
 }
