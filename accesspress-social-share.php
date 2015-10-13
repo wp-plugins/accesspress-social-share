@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
   Plugin name: AccessPress Social Share
   Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
   Description: A plugin to add various social media shares to a site with dynamic configuration options.
-  Version: 3.0.6
+  Version: 3.0.7
   Author: AccessPress Themes
   Author URI: http://accesspressthemes.com
   Text Domain: accesspress-social-share
@@ -30,7 +30,7 @@ if ( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if ( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '3.0.6' );
+	define( 'APSS_VERSION', '3.0.7' );
 }
 
 if ( !defined( 'APSS_TEXT_DOMAIN' ) ) {
