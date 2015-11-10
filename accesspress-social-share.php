@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
   Plugin name: AccessPress Social Share
   Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
   Description: A plugin to add various social media shares to a site with dynamic configuration options.
-  Version: 3.0.8
+  Version: 4.0.0
   Author: AccessPress Themes
   Author URI: http://accesspressthemes.com
   Text Domain: accesspress-social-share
@@ -30,7 +30,7 @@ if ( !defined( 'APSS_LANG_DIR' ) ) {
 }
 
 if ( !defined( 'APSS_VERSION' ) ) {
-	define( 'APSS_VERSION', '3.0.8' );
+	define( 'APSS_VERSION', '4.0.0' );
 }
 
 if ( !defined( 'APSS_TEXT_DOMAIN' ) ) {
@@ -60,7 +60,7 @@ if ( !class_exists( 'APSS_Class' ) ) {
 			add_action( 'init', array( $this, 'plugin_text_domain' ) ); //load the plugin text domain
 			add_action( 'init', array( $this, 'session_init' ) ); //start the session if not started yet.
 			add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_assets' ) ); //registers all the assets required for wp-admin
-			add_filter( 'the_content', array( $this, 'apss_the_content_filter' ) ); // add the filter function for display of social share icons in frontend
+			add_filter( 'the_content', array( $this, 'apss_the_content_filter' ), 12 ); // add the filter function for display of social share icons in frontend //added 12 priority level at the end to make the plugin compactible with Visual Composer.
 
 			if ( isset( $this->apss_settings['disable_frontend_assets'] ) && $this->apss_settings['disable_frontend_assets'] != '1' ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_assets' ) ); //registers all the assets required for the frontend
